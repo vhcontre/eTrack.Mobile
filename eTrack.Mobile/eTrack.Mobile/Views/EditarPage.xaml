@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTrack.Mobile.Views.EditarPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Aceptar" Clicked="Aceptar_Clicked" />
+        <ToolbarItem Text="Cancelar" Clicked="Cancelar_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout Padding="10,0">
+            <Label FontSize="Large" HorizontalOptions="Center" Text="Edición del activo" />
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Tag Id:" FontSize="Medium" />
+                <Label Text="{Binding Asset.Id}" d:Text="Tag Id" FontSize="Small"/>
+                <Grid x:Name="MainGridAsset1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Code:" FontSize="Medium" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="{Binding Asset.Code}" d:Text="Código" FontSize="Small" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="SapId:" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="{Binding Asset.SapId}" d:Text="Sap Id" FontSize="Small" Grid.Row="0" Grid.Column="1" />
+                </Grid>
+                <Label Text="Imágen:" FontSize="Medium" />
+                <Image>
+
+                </Image>
+
+                <Label Text="Location:" FontSize="Medium" />
+                <!--<Label Text="{Binding Asset.Location}" d:Text="Location" FontSize="Small"/>-->
+                <Picker x:Name="picker" Title="Seleccione una Location" TitleColor="Red">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Norte</x:String>                            
+                            <x:String>Blue</x:String>
+                            <x:String>Moreno</x:String>
+                            <x:String>Golden</x:String>
+                            <x:String>Howler</x:String>
+                            <x:String>Castelar</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label Text="Centro de costo:" FontSize="Medium" />
+                <Label Text="{Binding Asset.CostCenterName}" d:Text="Centro de costo" FontSize="Small"/>
+
+
+                <Grid x:Name="MainGridAsset2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Button x:Name="btn1" VerticalOptions="CenterAndExpand" Margin="-5,-7,-5,-6" Grid.Row="0" Grid.Column="0" Text="Previo"/>
+
+                    <Button x:Name="btn2" VerticalOptions="CenterAndExpand" Margin="-5,-7,-5,-6" Grid.Row="0" Grid.Column="1" Text="Próximo"/>
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

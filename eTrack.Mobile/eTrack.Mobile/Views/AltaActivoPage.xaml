@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTrack.Mobile.Views.AltaActivoPage"
+             Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Aceptar" Clicked="Aceptar_Clicked" />
+        <ToolbarItem Text="Cancelar" Clicked="Cancelar_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Padding="10,0">
+                <Label FontSize="Large" HorizontalOptions="Center" Text="Alta de activo" />
+                <StackLayout Spacing="20" Padding="15">
+
+                <Editor Text="{Binding Asset.Code}"
+                    x:Name="Code" 
+                    AutoSize="TextChanges" HorizontalOptions="Fill"
+                    Placeholder="Código" 
+                    FontSize="Medium" />
+                <Editor Text="{Binding Asset.SapId}"
+                    x:Name="SapId" 
+                    AutoSize="TextChanges" HorizontalOptions="Fill"
+                    Placeholder="Sap Id" 
+                    FontSize="Medium" />
+                <Editor Text="{Binding Asset.CostCenterName}"
+                    x:Name="CostCenterName" 
+                    AutoSize="TextChanges" HorizontalOptions="Fill"
+                    Placeholder="Centro de costo" 
+                    FontSize="Medium" />
+                <Editor Text="{Binding Asset.Location}"
+                    x:Name="Location" 
+                    AutoSize="TextChanges" HorizontalOptions="Fill"
+                    Placeholder="Location" 
+                    FontSize="Medium" />
+
+                </StackLayout>
+
+                <Grid x:Name="MainGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.33*" />
+                        <ColumnDefinition Width="0.33*" />
+                        <ColumnDefinition Width="0.33*" />
+                        <ColumnDefinition Width="0.33*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="+" x:Name="btn1" VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="Center" HeightRequest="{Binding Width, Source={x:Reference btn1}}" Grid.Row="0" Grid.Column="0"/>
+
+                    <Button Text="Cam" x:Name="btn2" VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
+                        HeightRequest="{Binding Width, Source={x:Reference btn2}}" Grid.Row="0" Grid.Column="1"/>
+
+                    <Button Text="Ver" x:Name="btn3" VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
+                        HeightRequest="{Binding Width, Source={x:Reference btn3}}" Grid.Row="0" Grid.Column="2"/>
+
+                    <Button Text="-" x:Name="btn4" VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
+                        HeightRequest="{Binding Width, Source={x:Reference btn4}}" Grid.Row="0" Grid.Column="3"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

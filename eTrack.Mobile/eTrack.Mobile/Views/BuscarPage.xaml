@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTrack.Mobile.Views.BuscarPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Aceptar" Clicked="Aceptar_Clicked" />
+        <ToolbarItem Text="Cancelar" Clicked="Cancelar_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout Padding="10,0">
+            <Label FontSize="Large" HorizontalOptions="Center" Text="Búsqueda de activo" />
+            <StackLayout Spacing="20" Padding="15">
+
+                <Label Text="Buscar por:" FontSize="Medium" />
+                <Picker x:Name="pickerBuscar" Title="Seleccione una búsqueda" TitleColor="Red">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Tag</x:String>
+                            <x:String>Códgio</x:String>
+                            <x:String>Fecha de alta</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Text="Filtrar por:" FontSize="Medium" />
+                <Picker x:Name="pickerFiltar" Title="Seleccione una filtro" TitleColor="Red">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Menor igual</x:String>
+                            <x:String>Mayor igual</x:String>
+                            <x:String>Igual</x:String>
+                            <x:String>Distinto</x:String>
+                            <x:String>Todos</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <DatePicker DateSelected="DatePicker_DateSelected" Format="dd/MM/yyyy" />
+                <Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage> 
