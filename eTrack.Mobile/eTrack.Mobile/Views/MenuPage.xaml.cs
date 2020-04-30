@@ -29,7 +29,20 @@ namespace eTrack.Mobile.Views
             {
                 await Navigation.PushAsync(new AssetPage(new AssetViewModel()));
             }
+            if (item.Id == "AsociarTAG")
+            {
+                await Navigation.PushAsync(new AsociarTagPage());
+            }
+            if (item.Id == "Inventariar")
+            {
+                await Navigation.PushAsync(new PreparacionInventarioPage());
+            }
+            if (item.Id == "Localizar")
+            {
+                await Navigation.PushAsync(new BuscarPage());
+            }
 
+            
         }
         protected override void OnAppearing()
         {

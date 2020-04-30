@@ -15,9 +15,9 @@ namespace eTrack.Mobile.Services
             items = new List<Item>()
             {
                 new Item { Id = "ABM", Text = "ABM", Description="Gestión de Asset." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Asociar TAG", Description="Asociar TAG" },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Inventariar", Description="Administrar inventario." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Localizar", Description="Localizar." },
+                new Item { Id = "AsociarTAG", Text = "Asociar TAG", Description="Asociar TAG" },
+                new Item { Id = "Inventariar", Text = "Inventariar", Description="Administrar inventario." },
+                new Item { Id = "Localizar", Text = "Localizar", Description="Localizar." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Auditar", Description="Auditar." },
                 new Item { Id = Guid.NewGuid().ToString(), Text = "Reportes", Description="Gestión de reportes." }
             };

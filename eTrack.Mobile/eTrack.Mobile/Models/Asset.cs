@@ -1,10 +1,12 @@
 ﻿using eTrack.Mobile.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace eTrack.Mobile.Models
 {
     public class Asset : IEntity
     {
-        public string Id { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string Code { get; set; }
         public string Tag { get; set; }
         public string SapId { get; set; }

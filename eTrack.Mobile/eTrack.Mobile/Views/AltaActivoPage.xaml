@@ -19,7 +19,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-
             <StackLayout Padding="10,0">
                 <Label FontSize="Large" HorizontalOptions="Center" Text="Alta de activo" />
                 <StackLayout Spacing="20" Padding="15">

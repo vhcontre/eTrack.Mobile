@@ -22,18 +22,18 @@
             <Label FontSize="Large" HorizontalOptions="Center" Text="Búsqueda de activo" />
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Buscar por:" FontSize="Medium" />
-                <Picker x:Name="pickerBuscar" Title="Seleccione una búsqueda" TitleColor="Red">
+                <Label Text="Buscar" FontSize="Medium" />
+                <Picker x:Name="pickerBuscar" Title="Seleccione Tag, Código o Fecha" TitleColor="Red">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Tag</x:String>
-                            <x:String>Códgio</x:String>
+                            <x:String>Código</x:String>
                             <x:String>Fecha de alta</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Label Text="Filtrar por:" FontSize="Medium" />
-                <Picker x:Name="pickerFiltar" Title="Seleccione una filtro" TitleColor="Red">
+                <Label Text="Filtros" FontSize="Medium" />
+                <Picker x:Name="pickerFiltros" Title="Seleccione un filtro" TitleColor="Red">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Menor igual</x:String>
@@ -44,7 +44,7 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-
+                <Label Text="Fecha" FontSize="Medium" />
                 <DatePicker DateSelected="DatePicker_DateSelected" Format="dd/MM/yyyy" />
                 <Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>
             </StackLayout>
