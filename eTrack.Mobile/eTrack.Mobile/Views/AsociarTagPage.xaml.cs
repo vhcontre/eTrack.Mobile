@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,9 @@ namespace eTrack.Mobile.Views
         public AsociarTagPage()
         {
             InitializeComponent();
+            BindingContext = new AsociarTagViewModel(Navigation);
         }
 
-        private void Salir_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Salir", "Se hizo clic en Salir", "aceptar");
-        }
+        
     }
 }

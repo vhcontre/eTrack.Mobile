@@ -5,10 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:eTrack.Mobile.Services"
              mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.AsociarTagPage">
+             x:Class="eTrack.Mobile.Views.AsociarTagPage"
+             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AsociarTagViewModel  />
+    </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salir" Clicked="Salir_Clicked" />
+        <ToolbarItem Text="Salir" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -48,14 +53,11 @@
                         <ColumnDefinition Width="0.33*" />
                         <ColumnDefinition Width="0.33*" />
                     </Grid.ColumnDefinitions>
-                    <Button Text="Buscar" x:Name="btn1" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Button Text="Buscar" x:Name="btn1" VerticalOptions="CenterAndExpand" Command="{Binding NavigationSearchAsset}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
 
-                    <Button Text="Consultar" x:Name="btn2" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                    <Button Text="Consultar" x:Name="btn2" VerticalOptions="CenterAndExpand" Command="{Binding NavigationConsultar}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
 
-                    <Button Text="T" x:Name="btn3" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                    <Button Text="T" x:Name="btn3" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
 
 
                 </Grid>

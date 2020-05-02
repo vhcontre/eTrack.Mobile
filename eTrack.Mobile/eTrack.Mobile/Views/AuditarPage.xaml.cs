@@ -11,15 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace eTrack.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class AuditarPage : ContentPage
     {
-        private UsuarioViewModel viewModel;
-        public LoginPage()
+        public AuditarPage()
         {
             InitializeComponent();
-            viewModel = new UsuarioViewModel(Navigation);
-            
-            BindingContext = viewModel;
+            BindingContext = new AuditarViewModel(Navigation);
         }
     }
 }

@@ -18,8 +18,8 @@ namespace eTrack.Mobile.Services
                 new Item { Id = "AsociarTAG", Text = "Asociar TAG", Description="Asociar TAG" },
                 new Item { Id = "Inventariar", Text = "Inventariar", Description="Administrar inventario." },
                 new Item { Id = "Localizar", Text = "Localizar", Description="Localizar." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Auditar", Description="Auditar." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Reportes", Description="Gestión de reportes." }
+                new Item { Id = "Auditar", Text = "Auditar", Description="Auditar." },
+                new Item { Id = "Reportes", Text = "Reportes", Description="Gestión de reportes." }
             };
         }
 

@@ -10,6 +10,7 @@ using eTrack.Mobile.Views;
 
 namespace eTrack.Mobile.ViewModels
 {
+
     public class ItemsViewModel : BaseViewModel
     {
         public ObservableCollection<Item> Items { get; set; }

@@ -4,15 +4,22 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.LoginPage">
+             x:Class="eTrack.Mobile.Views.LoginPage"
+             xmlns:local="clr-namespace:eTrack.Mobile.Views"
+             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:UsuarioViewModel  />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10,0">
             <Label FontSize="Large" HorizontalOptions="Center" Text="Iniciar sesión" />
             <Frame>
                 <StackLayout>
-                    <Entry Placeholder="Usuario" HorizontalOptions="Fill" />
-                    <Entry Placeholder="Contraseña" IsPassword="true" HorizontalOptions="Fill" />
-                    <Button Text="Log In" TextColor="White"  BackgroundColor="Gray" HorizontalOptions="Fill" />
+                    <Entry Text="{Binding UsuarioModel.UserName, Mode=TwoWay}" Placeholder="Usuario" HorizontalOptions="Fill" />
+                    <Entry Text="{Binding UsuarioModel.Password, Mode=TwoWay}" Placeholder="Contraseña" IsPassword="true" HorizontalOptions="Fill" />
+                    <Button Text="Log In" TextColor="White"  BackgroundColor="Gray" HorizontalOptions="Fill" Command="{Binding LoginCommand}" />
+                    <Label Text="{Binding Message}"></Label>
                 </StackLayout>
             </Frame>
         </StackLayout>

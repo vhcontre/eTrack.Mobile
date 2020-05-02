@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -41,8 +40,14 @@ namespace eTrack.Mobile.Views
             {
                 await Navigation.PushAsync(new BuscarPage());
             }
-
-            
+            if (item.Id == "Auditar")
+            {
+                await Navigation.PushAsync(new AuditoriaPage());
+            }
+            if (item.Id == "Reportes")
+            {
+                await Navigation.PushAsync(new ReportesPage());
+            }
         }
         protected override void OnAppearing()
         {

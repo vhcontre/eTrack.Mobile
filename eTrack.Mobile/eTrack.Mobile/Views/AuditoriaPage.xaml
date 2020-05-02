@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"            
+             x:Class="eTrack.Mobile.Views.AuditoriaPage"
+             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
+
+
+    <ContentPage.BindingContext>
+        <vm:AuditoriaViewModel  />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salir" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,0">
+                <Label FontSize="Large" HorizontalOptions="Center" Text="Auditoria" />
+                <StackLayout Spacing="20" Padding="15">
+                    <Editor Text="{Binding Asset.Code}"
+                        x:Name="Code" 
+                        AutoSize="TextChanges" HorizontalOptions="Fill"
+                        Placeholder="Código del activo" 
+                        FontSize="Medium" />
+                    <Editor Text="{Binding Asset.SapId}"
+                        x:Name="SapId" 
+                        AutoSize="TextChanges" HorizontalOptions="Fill"
+                        Placeholder="Descripción del activo (Max. 500 Caracteres)" 
+                        FontSize="Medium" />
+                    <Grid x:Name="MainGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.33*" />
+                            <ColumnDefinition Width="0.33*" />
+                            <ColumnDefinition Width="0.33*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Auditar" HeightRequest="80" x:Name="btn1" 
+                                VerticalOptions="CenterAndExpand" 
+                                Command="{Binding NavigationPage}" 
+                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                        <Button Text="Buscar" HeightRequest="80" x:Name="btn2" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                        <Button Text="Historial" HeightRequest="80" x:Name="btn3" VerticalOptions="CenterAndExpand"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                    </Grid>
+                    
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
