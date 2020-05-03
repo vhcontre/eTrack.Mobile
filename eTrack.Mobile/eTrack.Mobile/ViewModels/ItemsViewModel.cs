@@ -16,6 +16,16 @@ namespace eTrack.Mobile.ViewModels
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
+        public Command ExitCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SeleccionModoPage()));
+                });
+            }
+        }
         public ItemsViewModel()
         {
             Title = "Browse";

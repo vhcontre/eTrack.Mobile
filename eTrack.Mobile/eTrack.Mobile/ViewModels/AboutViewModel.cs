@@ -9,10 +9,17 @@ namespace eTrack.Mobile.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "Acerca de...";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            Title = "Información - eFALCOM S.A";
         }
-
-        public ICommand OpenWebCommand { get; }
+        public Command CloseCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage.Navigation.PopToRootAsync();
+                });
+            }
+        }
     }
 }

@@ -31,15 +31,7 @@ namespace eTrack.Mobile.Views
             var layout = (BindableObject)sender;
             var item = (Item)layout.BindingContext;
 
-            if (item.Id =="ABM")
-            {
-                await Navigation.PushAsync(new AssetPage(new AssetViewModel()));
-            }
-            //else
-            //{
-            //    await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-            //}
-
+            
         }
 
         protected override void OnAppearing()

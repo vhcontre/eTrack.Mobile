@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTrack.Mobile.Views.EleccionInventarioPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Aceptar"  />
+        <ToolbarItem Text="Cancelar" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,0">
+                <Label FontSize="Large" HorizontalOptions="Center" Text="Inventario (Elección)" />
+                <StackLayout Spacing="20" Padding="15">
+                    <Label FontSize="Medium" HorizontalOptions="Start" Text="(1)Por centro de costo: Permite seleccionar un Centro de Costo específico y realizar un inventario de los elementos del mismo." />
+                    <Label FontSize="Medium" HorizontalOptions="Start" Text="(2)Por seleccion arbitraria: Permite seleccionar cada uno de los elementos a inventariar, de la lista completa de elementos disponibles." />
+                    <Label FontSize="Medium" HorizontalOptions="Start" Text="(3)Completo: Selecciona automáticamente todos los elementos disponibles. (no permite selección manual)" />
+                    
+                    <Picker x:Name="pickerModo" Title="Seleccione un criterio" TitleColor="Red">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Por centro de costo</x:String>
+                                <x:String>Por seleccion arbitraria</x:String>
+                                <x:String>Completo</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Grid x:Name="MainGridAsset1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.50*" />
+                            <ColumnDefinition Width="0.50*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Text="Aceptar" x:Name="btnAceptar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}"
+                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                        <Button Text="Cancelar" x:Name="btnCancelar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource LightTextColor}"
+                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+
+                    </Grid>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

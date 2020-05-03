@@ -7,8 +7,7 @@
              x:Class="eTrack.Mobile.Views.EditarPage">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Aceptar" Clicked="Aceptar_Clicked" />
-        <ToolbarItem Text="Cancelar" Clicked="Cancelar_Clicked" />
+        <ToolbarItem Text="Cancelar" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -61,6 +60,7 @@
                 <Label Text="Centro de costo:" FontSize="Medium" />
                 <Label Text="{Binding Asset.CostCenterName}" d:Text="Centro de costo" FontSize="Small"/>
 
+                <Button Text="Aceptar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" />
 
                 <Grid x:Name="MainGridAsset2">
                     <Grid.RowDefinitions>

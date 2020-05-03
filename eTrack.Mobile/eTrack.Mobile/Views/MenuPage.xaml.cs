@@ -26,7 +26,7 @@ namespace eTrack.Mobile.Views
 
             if (item.Id == "ABM")
             {
-                await Navigation.PushAsync(new AssetPage(new AssetViewModel()));
+                await Navigation.PushAsync(new AssetPage());
             }
             if (item.Id == "AsociarTAG")
             {
@@ -47,6 +47,10 @@ namespace eTrack.Mobile.Views
             if (item.Id == "Reportes")
             {
                 await Navigation.PushAsync(new ReportesPage());
+            }
+            if (item.Id == "Setting")
+            {
+                await Navigation.PushAsync(new ConfigPage());
             }
         }
         protected override void OnAppearing()

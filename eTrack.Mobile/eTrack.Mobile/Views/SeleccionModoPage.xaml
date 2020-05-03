@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTrack.Mobile.Views.SeleccionModoPage"
+             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
+
+
+    <ContentPage.BindingContext>
+        <vm:SeleccionModoViewModel  />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,1,0,1" VerticalOptions="FillAndExpand">
+                    <Image Source="efalcom_logo.png" VerticalOptions="Center" HeightRequest="90" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="" />
+                                <Span Text="Seleccione el modo de la conexión de la aplicación" ForegroundColor="{StaticResource LightTextColor}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Picker x:Name="pickerModo" Title="Seleccione (Online-Offline)" TitleColor="Red">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Online</x:String>
+                            <x:String>Offline</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Button Margin="0,10,0,0" Text="Iniciar"
+                        Command="{Binding NavigationLogin}" 
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+                <Button Margin="0,10,0,0" Text="Salir"
+                        Command="{Binding NavigationClose}" 
+                        BackgroundColor="{StaticResource Accent}"
+                        TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

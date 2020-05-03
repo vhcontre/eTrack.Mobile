@@ -16,15 +16,5 @@ namespace eTrack.Mobile.Views
         {
             InitializeComponent();
         }
-
-        private void Aceptar_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Guardar opción", "Se hizo clic en Guardar", "Botón 2", "Botón 1");
-        }
-
-        private void Cancelar_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Guardar Cancelar", "Se hizo clic en Cancelar", "Botón 2", "Botón 1");
-        }
     }
 }

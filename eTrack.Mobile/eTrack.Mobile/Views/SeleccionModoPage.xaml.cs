@@ -11,17 +11,17 @@ using Xamarin.Forms.Xaml;
 namespace eTrack.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class SeleccionModoPage : ContentPage
     {
-        private UsuarioViewModel viewModel;
-        public LoginPage()
+        public SeleccionModoPage()
         {
             InitializeComponent();
-            viewModel = new UsuarioViewModel(Navigation);
-
-            BindingContext = viewModel;
+            BindingContext = new SeleccionModoViewModel(Navigation);
         }
 
-        
+        //async private void Clicked_Aceptar(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
+        //}
     }
 }

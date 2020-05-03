@@ -14,12 +14,13 @@ namespace eTrack.Mobile.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = "ABM", Text = "ABM", Description="Gestión de Asset." },
-                new Item { Id = "AsociarTAG", Text = "Asociar TAG", Description="Asociar TAG" },
-                new Item { Id = "Inventariar", Text = "Inventariar", Description="Administrar inventario." },
-                new Item { Id = "Localizar", Text = "Localizar", Description="Localizar." },
-                new Item { Id = "Auditar", Text = "Auditar", Description="Auditar." },
-                new Item { Id = "Reportes", Text = "Reportes", Description="Gestión de reportes." }
+                new Item { Id = "ABM", Text = "ABM", Description="Gestión de Asset.",Icon="icon_abm.png" },
+                new Item { Id = "AsociarTAG", Text = "Asociar TAG", Description="Asociar TAG" ,Icon="icon_tag.png" },
+                new Item { Id = "Inventariar", Text = "Inventariar", Description="Administrar inventario." ,Icon="icon_inventario.png" },
+                new Item { Id = "Localizar", Text = "Localizar", Description="Localizar." ,Icon="icon_locate.png" },
+                new Item { Id = "Auditar", Text = "Auditar", Description="Auditar.",Icon="icon_auditar.png" },
+                new Item { Id = "Reportes", Text = "Reportes", Description="Gestión de reportes." ,Icon="icon_reporte.png" },
+                new Item { Id = "Setting", Text = "Configurar", Description="Configuraciones." ,Icon="icon_setting.png" },
             };
         }
 

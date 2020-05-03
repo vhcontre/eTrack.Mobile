@@ -4,10 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.AssetPage" Title="Volver">
-    <!--Title="{Binding Title}">-->
+             x:Class="eTrack.Mobile.Views.AssetPage" 
+              xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AssetViewModel  />
+    </ContentPage.BindingContext>
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Agregar" Clicked="AltaActivoPage_Clicked" />
+        <ToolbarItem Text="Agregar" Command="{Binding AddCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -19,7 +24,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
-                <Label FontSize="Large" HorizontalOptions="Center" Text="Datos del activo" />
+                <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Datos del activo" />-->
                 <StackLayout Spacing="20" Padding="15">
                     <Editor Text="{Binding Asset.Id}"
                             x:Name="Id" 
@@ -44,7 +49,7 @@
                                 x:Name="SapId" 
                                 AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
                                 Placeholder="Sap Id" 
-                                FontSize="Medium" Grid.Row="0" Grid.Column="1" />    
+                                FontSize="Medium" Grid.Row="0" Grid.Column="1" />
                     </Grid>
 
                     <Editor Text="{Binding Asset.Description}"
@@ -82,7 +87,7 @@
                             <ColumnDefinition Width="0.50*" />
                             <ColumnDefinition Width="0.50*" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <Editor Text="{Binding Asset.CreatedBy}"
                             x:Name="CreatedBy" 
                             AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
@@ -107,14 +112,14 @@
                             <ColumnDefinition Width="0.33*" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Text="Editar" x:Name="btn1" VerticalOptions="CenterAndExpand" Clicked="Editar_Clicked"
+                        <Button Text="Editar" x:Name="btn1" VerticalOptions="CenterAndExpand" Command="{Binding EditCommand}"
                         HorizontalOptions="Center" HeightRequest="{Binding Width, Source={x:Reference btn1}}" Grid.Row="0" Grid.Column="0"/>
 
-                        <Button Text="Ver" x:Name="btn2" VerticalOptions="CenterAndExpand" Clicked="Ver_Clicked"
+                        <Button Text="Ver" x:Name="btn2" VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
                         HeightRequest="{Binding Width, Source={x:Reference btn2}}" Grid.Row="0" Grid.Column="1"/>
 
-                        <Button Text="T" x:Name="btn3" VerticalOptions="CenterAndExpand" Clicked="T_Clicked"
+                        <Button Text="T" x:Name="btn3" VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
                         HeightRequest="{Binding Width, Source={x:Reference btn3}}" Grid.Row="0" Grid.Column="2"/>
 
@@ -129,14 +134,14 @@
                             <ColumnDefinition Width="0.33*" />
                             <ColumnDefinition Width="0.33*" />
                         </Grid.ColumnDefinitions>
-                        <Button Text="Buscar" x:Name="btn5" VerticalOptions="CenterAndExpand" Clicked="Buscar_Clicked"
+                        <Button Text="Buscar" x:Name="btn5" VerticalOptions="CenterAndExpand" Command="{Binding FindCommand}"
                         HorizontalOptions="Center" HeightRequest="{Binding Width, Source={x:Reference btn5}}" Grid.Row="0" Grid.Column="0"/>
 
-                        <Button Text="Borrar" x:Name="btn6" VerticalOptions="CenterAndExpand" Clicked="Borrar_Clicked"
+                        <Button Text="Borrar" x:Name="btn6" VerticalOptions="CenterAndExpand" Command="{Binding DeleteCommand}"
                         HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn5}}"
                         HeightRequest="{Binding Width, Source={x:Reference btn6}}" Grid.Row="0" Grid.Column="1"/>
 
-                        <Button Text="Salir" x:Name="btn7" VerticalOptions="CenterAndExpand" Clicked="Salir_Clicked"
+                        <Button Text="Salir" x:Name="btn7" VerticalOptions="CenterAndExpand" 
                         HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn5}}"
                         HeightRequest="{Binding Width, Source={x:Reference btn7}}" Grid.Row="0" Grid.Column="2"/>
                     </Grid>

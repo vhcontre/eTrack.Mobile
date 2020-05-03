@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace eTrack.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuscarPage : ContentPage
+    public partial class ConfigPage : ContentPage
     {
-        public BuscarPage()
+        public ConfigPage()
         {
             InitializeComponent();
+            BindingContext = new ConfigViewModel(Navigation);
         }
-
-        
     }
 }

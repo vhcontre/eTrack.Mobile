@@ -13,6 +13,10 @@ namespace eTrack.Mobile.Views
         public MainPage()
         {
             InitializeComponent();
+
         }
+
+
+
     }
 }

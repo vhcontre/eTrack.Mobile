@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              x:Class="eTrack.Mobile.Views.BuscarPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Aceptar" Clicked="Aceptar_Clicked" />
-        <ToolbarItem Text="Cancelar" Clicked="Cancelar_Clicked" />
+        <ToolbarItem Text="Cancelar"  />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -45,8 +44,9 @@
                     </Picker.ItemsSource>
                 </Picker>
                 <Label Text="Fecha" FontSize="Medium" />
-                <DatePicker DateSelected="DatePicker_DateSelected" Format="dd/MM/yyyy" />
+                <DatePicker Format="dd/MM/yyyy" />
                 <Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>
+                <Button Text="Aceptar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

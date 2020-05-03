@@ -14,7 +14,9 @@ namespace eTrack.Mobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new SeleccionModoPage());
+
         }
 
         protected override void OnStart()
@@ -28,5 +30,6 @@ namespace eTrack.Mobile
         protected override void OnResume()
         {
         }
+        
     }
 }

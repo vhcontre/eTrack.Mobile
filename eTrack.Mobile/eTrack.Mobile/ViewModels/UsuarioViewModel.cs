@@ -10,6 +10,7 @@ using eTrack.Mobile.Models;
 
 namespace eTrack.Mobile.ViewModels
 {
+   
     public class UsuarioViewModel : BaseViewModel
     {
         public Usuario _usuario { get; set; }
@@ -32,6 +33,7 @@ namespace eTrack.Mobile.ViewModels
         public UsuarioViewModel() { }
         public UsuarioViewModel(INavigation navigation)
         {
+            Title = "Iniciar sesión";
             this.Navigation = navigation;
             UsuarioModel = new Usuario();
         }
@@ -59,12 +61,32 @@ namespace eTrack.Mobile.ViewModels
             }
         }
 
+        public Command CloseCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Navigation.PushModalAsync(new NavigationPage(new SeleccionModoPage()));
+                });
+            }
+        }
+
         private void GetMessage()
         {
             Message = "UserName " + UsuarioModel.UserName + ", Passwords " + UsuarioModel.Password;
-            if(UsuarioModel.UserName =="vcontreras")
+            if(UsuarioModel.UserName =="admin")
             {
-                Navigation.PushAsync(new ResultadoReportePage());
+                //Navigation.PushAsync(new MenuPage());
+                Navigation.PushModalAsync(new NavigationPage(new MenuPage()));
+            }
+            else if (UsuarioModel.UserName == "catch")
+            {
+                //Navigation.PushAsync(new ConfigPage());
+                Navigation.PushModalAsync(new NavigationPage(new ConfigPage()));
+            }
+            else {
+                Message = "Error en el inicio de Sesión.";
             }
         }
 

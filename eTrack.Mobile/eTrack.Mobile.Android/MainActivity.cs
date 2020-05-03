@@ -9,6 +9,7 @@ using Android.OS;
 
 namespace eTrack.Mobile.Droid
 {
+    //NoHistory = true,
     [Activity(Label = "eTrack.Mobile", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -29,5 +30,9 @@ namespace eTrack.Mobile.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        //public override void OnBackPressed()
+        //{
+        //    return;
+        //}
     }
 }

@@ -10,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace eTrack.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuscarPage : ContentPage
+    public partial class EleccionInventarioPage : ContentPage
     {
-        public BuscarPage()
+        public EleccionInventarioPage()
         {
             InitializeComponent();
         }
-
-        
     }
 }

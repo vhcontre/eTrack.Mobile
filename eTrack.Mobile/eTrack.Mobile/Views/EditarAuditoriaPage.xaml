@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="eTrack.Mobile.Views.EditarAuditoriaPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Aceptar"  />
+        <ToolbarItem Text="Cancelar" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10,0">
+                <Label FontSize="Large" HorizontalOptions="Center" Text="Modificación de auditoria" />
+                <StackLayout Spacing="20" Padding="15">
+                    <Editor Text=""
+                        x:Name="Descripcion" 
+                        AutoSize="TextChanges" HorizontalOptions="Fill"
+                        Placeholder="Descripción de la auditoria (Max. 500 Caracteres)" 
+                        FontSize="Medium" />
+
+                    <Label Text="Fecha auditoria" FontSize="Medium" />
+                    <DatePicker Format="dd/MM/yyyy" />
+                    <Editor Text=""
+                        x:Name="HoraAuditoria" 
+                        AutoSize="TextChanges" HorizontalOptions="Fill"
+                        Placeholder="Hora de auditoria" 
+                        FontSize="Medium" />
+                    <Editor Text=""
+                        x:Name="AuditadoPor" 
+                        AutoSize="TextChanges" HorizontalOptions="Fill"
+                        Placeholder="Auditado por" 
+                        FontSize="Medium" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
