@@ -3,25 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.LoginPage"
-             xmlns:local="clr-namespace:eTrack.Mobile.Views"
-             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <vm:UsuarioViewModel  />
-    </ContentPage.BindingContext>
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
+            
+             mc:Ignorable="d" NavigationPage.HasBackButton="False"             
+             x:Class="eTrack.Mobile.Views.LoginPage" Title="{Binding Title}">
     <ContentPage.Content>
-        
         <StackLayout Padding="10,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,1,0,1" VerticalOptions="FillAndExpand">
@@ -31,12 +16,12 @@
             <Label FontSize="Large" HorizontalOptions="Center" Text="Ingrese datos de usuario" />
             <Frame>
                 <StackLayout>
-                    <Entry Text="{Binding UsuarioModel.UserName, Mode=TwoWay}" Placeholder="Usuario" HorizontalOptions="Fill" />
+                    <Entry Text="{Binding UsuarioModel.UserName, Mode=TwoWay}" Placeholder="Usuario" HorizontalOptions="Fill" x:Name="txtUserName" ReturnType="Send" >
+                    </Entry>
                     <Entry Text="{Binding UsuarioModel.Password, Mode=TwoWay}" Placeholder="Contraseña" IsPassword="true" HorizontalOptions="Fill" />
                     <Button Text="Ingresar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding LoginCommand}" />
                     <Button Text="Cerrar" TextColor="White"  BackgroundColor="{StaticResource LightTextColor}" HorizontalOptions="Fill" Command="{Binding CloseCommand}" />
-
-                    <Label TextColor="Red" FontSize="Large" Text="{Binding Message}"></Label>
+                    <Label TextColor="Red" FontSize="Medium" Text="{Binding Message}"></Label>
                 </StackLayout>
             </Frame>
         </StackLayout>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,14 @@ namespace eTrack.Mobile.Views
         public InventarioPage()
         {
             InitializeComponent();
+            BindingContext = new InventarioViewModel(Navigation);
         }
 
-        private void Exportar_Clicked(object sender, EventArgs e)
-        {
+        
 
-        }
-
-        private void Cancelar_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        async void Notas_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new InventarioNotasPage());
-        }
+        //async void Notas_Clicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new InventarioNotasPage());
+        //}
     }
 }

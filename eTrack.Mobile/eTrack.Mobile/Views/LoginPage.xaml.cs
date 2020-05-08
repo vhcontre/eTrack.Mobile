@@ -13,13 +13,11 @@ namespace eTrack.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        private UsuarioViewModel viewModel;
         public LoginPage()
         {
             InitializeComponent();
-            viewModel = new UsuarioViewModel(Navigation);
-
-            BindingContext = viewModel;
+            //this.Appearing += (object sender, System.EventArgs e) => txtUserName.Focus();
+            BindingContext = new UsuarioViewModel(Navigation);
         }
 
         

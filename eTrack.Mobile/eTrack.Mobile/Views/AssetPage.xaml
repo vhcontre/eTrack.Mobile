@@ -3,24 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.AssetPage" 
-              xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <vm:AssetViewModel  />
-    </ContentPage.BindingContext>
+             mc:Ignorable="d" x:Class="eTrack.Mobile.Views.AssetPage" 
+             NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Agregar" Command="{Binding AddCommand}" />
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
@@ -99,9 +88,9 @@
                             Placeholder="Modificado por" 
                             FontSize="Medium" Grid.Row="1" Grid.Column="1" />
                     </Grid>
+                    <Button Text="Nuevo activo" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding AddCommand}" />
 
-
-                    <Grid x:Name="MainGrid1">
+                    <Grid x:Name="ButtonGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -110,41 +99,23 @@
                             <ColumnDefinition Width="0.33*" />
                             <ColumnDefinition Width="0.33*" />
                             <ColumnDefinition Width="0.33*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Button Text="Editar" x:Name="btn1" VerticalOptions="CenterAndExpand" Command="{Binding EditCommand}"
-                        HorizontalOptions="Center" HeightRequest="{Binding Width, Source={x:Reference btn1}}" Grid.Row="0" Grid.Column="0"/>
-
-                        <Button Text="Ver" x:Name="btn2" VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
-                        HeightRequest="{Binding Width, Source={x:Reference btn2}}" Grid.Row="0" Grid.Column="1"/>
-
-                        <Button Text="T" x:Name="btn3" VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn1}}"
-                        HeightRequest="{Binding Width, Source={x:Reference btn3}}" Grid.Row="0" Grid.Column="2"/>
-
-                    </Grid>
-                    <Grid x:Name="MainGrid2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.33*" />
-                            <ColumnDefinition Width="0.33*" />
                             <ColumnDefinition Width="0.33*" />
                         </Grid.ColumnDefinitions>
-                        <Button Text="Buscar" x:Name="btn5" VerticalOptions="CenterAndExpand" Command="{Binding FindCommand}"
-                        HorizontalOptions="Center" HeightRequest="{Binding Width, Source={x:Reference btn5}}" Grid.Row="0" Grid.Column="0"/>
 
-                        <Button Text="Borrar" x:Name="btn6" VerticalOptions="CenterAndExpand" Command="{Binding DeleteCommand}"
-                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn5}}"
-                        HeightRequest="{Binding Width, Source={x:Reference btn6}}" Grid.Row="0" Grid.Column="1"/>
+                        <Button Text="Editar" x:Name="btn1" VerticalOptions="CenterAndExpand" Command="{Binding EditCommand}" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
 
-                        <Button Text="Salir" x:Name="btn7" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" WidthRequest="{Binding Width, Source={x:Reference btn5}}"
-                        HeightRequest="{Binding Width, Source={x:Reference btn7}}" Grid.Row="0" Grid.Column="2"/>
+                        <Button Text="Ver" x:Name="btn2" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+
+                        <Button Text="Buscar" x:Name="btn3" VerticalOptions="CenterAndExpand" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+
+                        <Button Text="Borrar" x:Name="btn4" VerticalOptions="CenterAndExpand" Command="{Binding DeleteCommand}" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="3"/>
+
                     </Grid>
+                    
                 </StackLayout>
             </StackLayout>
         </ScrollView>

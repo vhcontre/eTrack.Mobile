@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eTrack.Mobile.Models
 {
-    public class Asset : IEntity
+    public class AssetModel : IEntity
     {
         [Key]
         public int Id { get; set; }

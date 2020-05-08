@@ -9,7 +9,8 @@ namespace eTrack.Mobile.ViewModels
     {
         public INavigation Navigation { get; set; }
         //public ICommand NavigationLogin { get; protected set; }
-        public SeleccionModoViewModel() {
+        public SeleccionModoViewModel()
+        {
         }
 
         public SeleccionModoViewModel(INavigation navigation)
@@ -26,7 +27,8 @@ namespace eTrack.Mobile.ViewModels
             {
                 return new Command(() =>
                 {
-                    Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
+                    //Navigation.PushAsync(new NavigationPage(new LoginPage()));
+                    Navigation.PushAsync(new LoginPage());
                 });
             }
         }

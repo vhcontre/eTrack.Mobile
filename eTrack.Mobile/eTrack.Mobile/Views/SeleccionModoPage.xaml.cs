@@ -18,10 +18,5 @@ namespace eTrack.Mobile.Views
             InitializeComponent();
             BindingContext = new SeleccionModoViewModel(Navigation);
         }
-
-        //async private void Clicked_Aceptar(object sender, EventArgs e)
-        //{
-        //    await Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
-        //}
     }
 }

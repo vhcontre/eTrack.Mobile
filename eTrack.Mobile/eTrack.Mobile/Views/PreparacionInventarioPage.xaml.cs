@@ -1,4 +1,5 @@
 ﻿using eTrack.Mobile.Models;
+using eTrack.Mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,34 +15,20 @@ namespace eTrack.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PreparacionInventarioPage : ContentPage
     {
-        private ObservableCollection<Asset> myList;
-
-        public ObservableCollection<Asset> MyList
-        {
-            get { return myList; }
-            set { myList = value; }
-        }
+        public ObservableCollection<AssetModel> MyList { get; set; }
         public PreparacionInventarioPage()
         {
             InitializeComponent();
-            MyList = new ObservableCollection<Asset>();
 
-            for (int i = 1; i < 6; i++)
+            BindingContext = new PreparacionInventarioViewModel(Navigation);
+            MyList = new ObservableCollection<AssetModel>();
+
+            for (int i = 1; i < 5; i++)
             {
-                MyList.Add(new Asset() { Id = i, Code = "Código" + i.ToString(), SapId = "SapId" + i.ToString(), Location = "Location" + i.ToString() });
+                MyList.Add(new AssetModel() { Id = i, Code = "Código" + i.ToString(), SapId = "SapId" + i.ToString(), Location = "Ubicación" + i.ToString() });
             }
 
             ContactsList.ItemsSource = MyList;
-        }
-
-        private void Cancelar_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        async private void Siguiente_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new InventarioPage());
         }
     }
 }

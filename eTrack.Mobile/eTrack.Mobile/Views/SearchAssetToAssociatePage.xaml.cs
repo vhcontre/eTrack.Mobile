@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace eTrack.Mobile.Views
         public SearchAssetToAssociatePage()
         {
             InitializeComponent();
+            BindingContext = new SearchAssetToAssociateViewModel(Navigation);
         }
     }
 }

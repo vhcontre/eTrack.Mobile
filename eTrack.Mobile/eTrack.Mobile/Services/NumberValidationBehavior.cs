@@ -1,7 +1,10 @@
-﻿using Xamarin.Forms;
+﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace eTrack.Mobile.Services
 {
+
     public class NumberValidationBehavior : Behavior<Entry>
     {
         protected override void OnAttachedTo(Entry entry)

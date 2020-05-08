@@ -22,7 +22,7 @@ namespace eTrack.Mobile.ViewModels
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SeleccionModoPage()));
+                    Application.Current.MainPage.Navigation.PushAsync(new SeleccionModoPage());
                 });
             }
         }

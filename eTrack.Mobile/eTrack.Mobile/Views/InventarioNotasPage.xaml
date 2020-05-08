@@ -4,24 +4,22 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.InventarioNotasPage">
+             x:Class="eTrack.Mobile.Views.InventarioNotasPage"
+             NavigationPage.HasBackButton="False" Title="{Binding Title}">
+    
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Aceptar" />
-        <ToolbarItem Text="Cancelar" />
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+   
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
-                <Label FontSize="Large" HorizontalOptions="Center" Text="Inventario (NOTAS)" />
+                <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Inventario (NOTAS)" />-->
                 <StackLayout Spacing="20" Padding="15">
                     <Editor Text="Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto." x:Name="Code" AutoSize="TextChanges" HorizontalOptions="Fill" FontSize="Medium" />
+                    <Button Margin="0,10,0,0" Text="Guardar " Command="{Binding SaveCommand}"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>

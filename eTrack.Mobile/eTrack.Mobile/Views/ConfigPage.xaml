@@ -5,22 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="eTrack.Mobile.Views.ConfigPage"
-             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <vm:ConfigViewModel  />
-    </ContentPage.BindingContext>
+             NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salir" />
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+   
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">

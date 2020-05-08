@@ -5,26 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="eTrack.Mobile.Views.SearchAssetToAssociatePage" 
-             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
+             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
-    <!--<ContentPage.BindingContext>
-        <vm:ReportesViewModel  />
-    </ContentPage.BindingContext>-->
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-
         <StackLayout Padding="10,0">
-            <Label FontSize="Large" HorizontalOptions="Center" Text="Búsquedas de activos" />
+            <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Búsquedas de activos" />-->
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Buscar" FontSize="Medium" />
-                <Picker x:Name="pickerBuscar" Title="Seleccione Tag, Código o Fecha" TitleColor="Red">
+                <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="Bold,20"/>
+                <Picker x:Name="pickerBuscar" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Tag</x:String>
@@ -33,8 +26,8 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Label Text="Filtros" FontSize="Medium" />
-                <Picker x:Name="pickerFiltros" Title="Seleccione un filtro" TitleColor="Red">
+                <Label Text="Aplicar filtro" FontSize="Medium" Font="Bold,20"/>
+                <Picker x:Name="pickerFiltros" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Menor igual</x:String>
@@ -57,10 +50,9 @@
                         <ColumnDefinition Width="0.50*" />
                         <ColumnDefinition Width="0.50*" />
                     </Grid.ColumnDefinitions>
-                    <Button Text="Aceptar"  WidthRequest="150" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" 
-                                
-                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Button Text="Cancelar" WidthRequest="150" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand" 
+                    <Button Text="Aceptar"  WidthRequest="150" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}"
+                                  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                    <Button Text="Cancelar" WidthRequest="150" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
                             HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
                 </Grid>
             </StackLayout>

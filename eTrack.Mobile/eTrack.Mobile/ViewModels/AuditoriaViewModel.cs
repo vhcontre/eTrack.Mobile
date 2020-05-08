@@ -15,6 +15,7 @@ namespace eTrack.Mobile.ViewModels
 
         public AuditoriaViewModel(INavigation navigation)
         {
+            Title = "Auditoria";
             this.Navigation = navigation;
             this.NavigationPage = new Command(async () => await Navigation.PushAsync(new AuditarPage()));
         }

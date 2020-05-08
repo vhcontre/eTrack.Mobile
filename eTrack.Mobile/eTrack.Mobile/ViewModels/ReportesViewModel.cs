@@ -6,19 +6,20 @@ using eTrack.Mobile.Views;
 
 namespace eTrack.Mobile.ViewModels
 {
-    public class ReportesViewModel : BaseViewModel
+    //ResultadoReportePage
+    public class ResultadoReporteViewModel : BaseViewModel
     {
         public INavigation Navigation { get; set; }
-        public ICommand CommandAcept { get; protected set; }
-        public ICommand CommandCancel { get; protected set; }
-        public ICommand CommandLocate { get; protected set; }
-        public ReportesViewModel() { }
+        public ICommand AcceptCommand { get; protected set; }
+        public ICommand CancelCommand { get; protected set; }
+        public ResultadoReporteViewModel() { }
 
-        public ReportesViewModel(INavigation navigation)
+        public ResultadoReporteViewModel(INavigation navigation)
         {
+            Title = "Auditorías registradas";
             this.Navigation = navigation;
-            this.CommandCancel = new Command(async () => await Application.Current.MainPage.DisplayAlert("Command Cancelar", "Se hizo clic en Cancelar", "Botón 2", "Botón 1"));
-            this.CommandAcept = new Command(async () => await ResultadoReporte());
+            //this.CancelCommand = new Command(async () => await Application.Current.MainPage.DisplayAlert("Command Cancelar", "Se hizo clic en Cancelar", "Ok"));
+            //this.AcceptCommand = new Command(async () => await ResultadoReporte());
 
         }
         private async Task ResultadoReporte()
@@ -26,7 +27,28 @@ namespace eTrack.Mobile.ViewModels
             //await Application.Current.MainPage.DisplayAlert("Command Aceptar", "Se hizo clic en Aceptar", "Yes", "No");
             //await this.Navigation.PushAsync(new ResultadoReportePage());
             //await this.Navigation.PushAsync(new ResultadoHistorialPage());
-            await this.Navigation.PushAsync(new SearchAssetToAssociatePage());
+        }
+    }
+    public class ReportesViewModel : BaseViewModel
+    {
+        public INavigation Navigation { get; set; }
+        public ICommand AcceptCommand { get; protected set; }
+        public ICommand CancelCommand { get; protected set; }
+        public ReportesViewModel() { }
+
+        public ReportesViewModel(INavigation navigation)
+        {
+            Title = "Reportes de auditorías";
+            this.Navigation = navigation;
+            this.CancelCommand = new Command(async () => await Application.Current.MainPage.DisplayAlert("Command Cancelar", "Se hizo clic en Cancelar", "Ok"));
+            this.AcceptCommand = new Command(async () => await ResultadoReporte());
+
+        }
+        private async Task ResultadoReporte()
+        {
+            //await Application.Current.MainPage.DisplayAlert("Command Aceptar", "Se hizo clic en Aceptar", "Yes", "No");
+            await this.Navigation.PushAsync(new ResultadoReportePage());
+            //await this.Navigation.PushAsync(new ResultadoHistorialPage());
         }
     }
 }

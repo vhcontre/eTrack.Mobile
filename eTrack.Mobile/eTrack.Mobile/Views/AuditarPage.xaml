@@ -5,28 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"             
              x:Class="eTrack.Mobile.Views.AuditarPage"
-             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <vm:AuditarViewModel  />
-    </ContentPage.BindingContext>
+             xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Aceptar" Command="{Binding CommandAcept}"/>
-        <ToolbarItem Text="Cancelar" Command="{Binding CommandCancel}" />
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
-                <Label FontSize="Large" HorizontalOptions="Center" Text="Registro de auditoria" />
+                <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Registro de auditoria" />-->
                 <StackLayout Spacing="20" Padding="15">
                     <Editor Text=""
                         x:Name="Description" 
@@ -44,15 +33,19 @@
                             <ColumnDefinition Width="0.33*" />
                             <ColumnDefinition Width="0.33*" />
                         </Grid.ColumnDefinitions>
-                        <Button Text="+" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" 
+                        <Button Text="+" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
                         HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                        <Button Text="Cam" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand" 
+                        <Button Text="Cam" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
                         HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
-                        <Button Text="Ver" HeightRequest="60" x:Name="btn3" VerticalOptions="CenterAndExpand" 
+                        <Button Text="Ver" HeightRequest="60" x:Name="btn3" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
                         HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
-                        <Button Text="-" HeightRequest="60" x:Name="btn4" VerticalOptions="CenterAndExpand" 
+                        <Button Text="-" HeightRequest="60" x:Name="btn4" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
                         HorizontalOptions="Center" Grid.Row="0" Grid.Column="3"/>
                     </Grid>
+
+                    <Button Text="Aceptar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding AcceptCommand}" />
+
+
                     <Label Text="Fecha auditoria" FontSize="Medium" />
                     <DatePicker Format="dd/MM/yyyy" />
                     <Editor Text=""
@@ -80,7 +73,7 @@
                                 AutoSize="TextChanges" HorizontalOptions="FillAndExpand"
                                 Placeholder="Coordenadas" VerticalOptions="CenterAndExpand"
                                 FontSize="Medium" Grid.Row="0" Grid.Column="0" />
-                        <Button Text="Ubicar" Command="{Binding CommandLocate}" x:Name="btnUbicar" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                        <Button Text="Ubicar" Command="{Binding LocateCommand}" x:Name="btnUbicar" BackgroundColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
 
                     </Grid>
                 </StackLayout>

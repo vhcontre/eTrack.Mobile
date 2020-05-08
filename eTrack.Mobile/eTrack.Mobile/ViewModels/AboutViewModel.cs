@@ -7,19 +7,10 @@ namespace eTrack.Mobile.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
-        public AboutViewModel()
+        public AboutViewModel(INavigation navigation)
         {
             Title = "Información - eFALCOM S.A";
         }
-        public Command CloseCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    Application.Current.MainPage.Navigation.PopToRootAsync();
-                });
-            }
-        }
+        public AboutViewModel() { }
     }
 }

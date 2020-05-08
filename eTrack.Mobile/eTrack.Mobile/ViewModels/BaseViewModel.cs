@@ -28,6 +28,31 @@ namespace eTrack.Mobile.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        public virtual Command BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Application.Current.MainPage.Navigation.PopAsync();
+                });
+            }
+        }
+
+        private string _message;
+        public string Message
+        {
+            get
+            {
+                return _message;
+            }
+            set
+            {
+                _message = value;
+                OnPropertyChanged();
+            }
+        }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)

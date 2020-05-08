@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,7 @@ namespace eTrack.Mobile.Views
         public AltaActivoPage()
         {
             InitializeComponent();
-        }
-
-        private void Save_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Aceptar_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Guardar opción", "Se hizo clic en Guardar", "Botón 2", "Botón 1");
-        }
-
-        private void Cancelar_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Guardar Cancelar", "Se hizo clic en Cancelar", "Botón 2", "Botón 1");
-        }
+            BindingContext = new AssetCreateViewModel(Navigation);
+        }        
     }
 }

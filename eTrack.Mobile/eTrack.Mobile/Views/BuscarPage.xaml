@@ -3,26 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.BuscarPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancelar"  />
-    </ContentPage.ToolbarItems>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Content>
+             mc:Ignorable="d" x:Class="eTrack.Mobile.Views.BuscarPage"
+             NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
         <StackLayout Padding="10,0">
-            <Label FontSize="Large" HorizontalOptions="Center" Text="Búsqueda de activo" />
+            <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Búsqueda de activo" />-->
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Buscar" FontSize="Medium" />
-                <Picker x:Name="pickerBuscar" Title="Seleccione Tag, Código o Fecha" TitleColor="Red">
+                <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="Bold,20"/>
+                <Picker x:Name="pickerBuscar" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Tag</x:String>
@@ -31,8 +25,8 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Label Text="Filtros" FontSize="Medium" />
-                <Picker x:Name="pickerFiltros" Title="Seleccione un filtro" TitleColor="Red">
+                <Label Text="Aplicar filtro" FontSize="Medium" Font="Bold,20"/>
+                <Picker x:Name="pickerFiltros" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Menor igual</x:String>
@@ -43,10 +37,11 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Label Text="Fecha" FontSize="Medium" />
+                <Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
                 <DatePicker Format="dd/MM/yyyy" />
-                <Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>
-                <Button Text="Aceptar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" />
+                <!--<Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>-->
+                <Button Text="Aceptar" Command="{Binding FindCommand}" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" />
+                <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

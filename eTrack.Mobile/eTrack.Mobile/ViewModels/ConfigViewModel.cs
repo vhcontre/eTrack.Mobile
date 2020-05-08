@@ -23,7 +23,9 @@ namespace eTrack.Mobile.ViewModels
             {
                 return new Command(() =>
                 {
-                    Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
+                    //Navigation.PushModalAsync(new NavigationPage(new LoginPage()));
+                    //Navigation.PushModalAsync(new LoginPage());
+                    Navigation.PushAsync(new LoginPage());
                 });
             }
         }

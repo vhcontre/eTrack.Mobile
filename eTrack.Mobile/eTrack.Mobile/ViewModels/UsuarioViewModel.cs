@@ -28,7 +28,7 @@ namespace eTrack.Mobile.ViewModels
             }
         }
 
-        private string _message;
+        
 
         public UsuarioViewModel() { }
         public UsuarioViewModel(INavigation navigation)
@@ -38,18 +38,7 @@ namespace eTrack.Mobile.ViewModels
             UsuarioModel = new Usuario();
         }
 
-        public string Message
-        {
-            get
-            {
-                return _message;
-            }
-            set
-            {
-                _message = value;
-                OnPropertyChanged();
-            }
-        }
+        
         public Command LoginCommand
         {
             get
@@ -67,26 +56,26 @@ namespace eTrack.Mobile.ViewModels
             {
                 return new Command(() =>
                 {
-                    Navigation.PushModalAsync(new NavigationPage(new SeleccionModoPage()));
+                    Navigation.PushAsync(new SeleccionModoPage());
                 });
             }
         }
 
         private void GetMessage()
         {
-            Message = "UserName " + UsuarioModel.UserName + ", Passwords " + UsuarioModel.Password;
+            
             if(UsuarioModel.UserName =="admin")
             {
-                //Navigation.PushAsync(new MenuPage());
-                Navigation.PushModalAsync(new NavigationPage(new MenuPage()));
+                //Message = "UserName " + UsuarioModel.UserName + ", Passwords " + UsuarioModel.Password;
+                this.Message = string.Empty;
+                Navigation.PushAsync(new MenuPage());
             }
             else if (UsuarioModel.UserName == "catch")
             {
-                //Navigation.PushAsync(new ConfigPage());
-                Navigation.PushModalAsync(new NavigationPage(new ConfigPage()));
+                Navigation.PushAsync(new ConfigPage());
             }
             else {
-                Message = "Error en el inicio de Sesión.";
+                Message = "Error en el inicio de Sesión. Credenciales incorrectas";
             }
         }
 

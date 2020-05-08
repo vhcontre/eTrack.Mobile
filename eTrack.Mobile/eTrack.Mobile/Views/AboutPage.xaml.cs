@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.ViewModels;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,7 @@ namespace eTrack.Mobile.Views
         public AboutPage()
         {
             InitializeComponent();
+            this.BindingContext = new AboutViewModel(Navigation);
         }
     }
 }
