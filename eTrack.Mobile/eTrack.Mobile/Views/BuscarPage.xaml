@@ -40,7 +40,7 @@
                 <Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
                 <DatePicker Format="dd/MM/yyyy" />
                 <!--<Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>-->
-                <Button Text="Aceptar" Command="{Binding FindCommand}" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" />
+                <Button Text="Aceptar" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" TextColor="White" Font="Bold,18" />
                 <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
             </StackLayout>
         </StackLayout>

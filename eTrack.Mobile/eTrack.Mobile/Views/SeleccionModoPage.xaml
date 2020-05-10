@@ -43,11 +43,11 @@
                 <Button Margin="0,10,0,0" Text="Iniciar"
                         Command="{Binding NavigationLogin}" 
                         BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+                        TextColor="White" Font="Bold,18" />
                 <Button Margin="0,10,0,0" Text="Salir"
                         Command="{Binding NavigationClose}" 
                         BackgroundColor="{StaticResource Accent}"
-                        TextColor="White" />
+                        TextColor="White" Font="Bold,18" />
             </StackLayout>
         </ScrollView>
     </Grid>

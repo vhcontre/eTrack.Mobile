@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eTrack.Mobile.Models;
@@ -14,7 +13,7 @@ namespace eTrack.Mobile.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = "ABM", Text = "ABM", Description="Gestión de Asset.",Icon="icon_abm.png" },
+                new Item { Id = "ABM", Text = "Activos", Description="Gestión de Asset.",Icon="icon_abm.png" },
                 new Item { Id = "AsociarTAG", Text = "Asociar TAG", Description="Asociar TAG" ,Icon="icon_tag.png" },
                 new Item { Id = "Inventariar", Text = "Inventariar", Description="Administrar inventario." ,Icon="icon_inventario.png" },
                 new Item { Id = "Localizar", Text = "Localizar", Description="Localizar." ,Icon="icon_locate.png" },

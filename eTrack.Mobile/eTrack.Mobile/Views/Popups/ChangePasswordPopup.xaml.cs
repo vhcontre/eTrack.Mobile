@@ -1,4 +1,5 @@
 ﻿using eTrack.Mobile.ViewModels;
+using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,17 @@ using Xamarin.Forms.Xaml;
 namespace eTrack.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class ChangePasswordPopup : PopupPage
     {
-        public LoginPage()
+        public ChangePasswordPopup()
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel(Navigation);
+            BindingContext = new ChangePasswordViewModel();
         }
 
-        //this.Appearing += (object sender, System.EventArgs e) => txtUserName.Focus();
-
+        protected override bool OnBackgroundClicked()
+        {
+            return false;
+        }
     }
 }

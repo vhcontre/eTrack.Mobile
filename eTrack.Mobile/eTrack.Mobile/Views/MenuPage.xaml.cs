@@ -24,41 +24,39 @@ namespace eTrack.Mobile.Views
             var layout = (BindableObject)sender;
             var item = (Item)layout.BindingContext;
 
-            if (item.Id == "ABM")
+            switch (item.Id)
             {
-                await Navigation.PushAsync(new AssetPage());
-            }
-            if (item.Id == "AsociarTAG")
-            {
-                await Navigation.PushAsync(new AsociarTagPage());
-            }
-            if (item.Id == "Inventariar")
-            {
-                await Navigation.PushAsync(new PreparacionInventarioPage());
-            }
-            if (item.Id == "Localizar")
-            {
-                await Navigation.PushAsync(new BuscarPage());
-            }
-            if (item.Id == "Auditar")
-            {
-                await Navigation.PushAsync(new AuditoriaPage());
-            }
-            if (item.Id == "Reportes")
-            {
-                await Navigation.PushAsync(new ReportesPage());
-            }
-            if (item.Id == "Setting")
-            {
-                await Navigation.PushAsync(new ConfigPage());
+                case "ABM":
+                    await Navigation.PushAsync(new AssetPage());
+                    break;
+                case "AsociarTAG":
+                    await Navigation.PushAsync(new AsociarTagPage());
+                    break;
+                case "Inventariar":
+                    await Navigation.PushAsync(new PreparacionInventarioPage());
+                    break;
+                case "Localizar":
+                    await Navigation.PushAsync(new BuscarPage());
+                    break;
+                case "Auditar":
+                    await Navigation.PushAsync(new AuditoriaPage());
+                    break;
+                case "Reportes":
+                    await Navigation.PushAsync(new ReportesPage());
+                    break;
+                case "Setting":
+                    await Navigation.PushAsync(new ConfigPage());
+                    break;
+                default:
+                    break;
             }
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.IsBusy = true;
-        }
+        //    if (viewModel.Items.Count == 0)
+        //        viewModel.IsBusy = true;
+        //}
     }
 }

@@ -25,7 +25,7 @@ namespace eTrack.Mobile.Views
 
             for (int i = 1; i < 5; i++)
             {
-                MyList.Add(new AssetModel() { Id = i, Code = "Código" + i.ToString(), SapId = "SapId" + i.ToString(), Location = "Ubicación" + i.ToString() });
+                MyList.Add(new AssetModel() { Id = i.ToString(), Code = "Código" + i.ToString(), SapId = "SapId" + i.ToString(), Location = "Ubicación" + i.ToString() });
             }
 
             ContactsList.ItemsSource = MyList;

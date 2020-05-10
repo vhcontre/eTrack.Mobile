@@ -12,6 +12,8 @@ namespace eTrack.Mobile.ViewModels
         public INavigation Navigation { get; set; }
         public ICommand AcceptCommand { get; protected set; }
         public ICommand CancelCommand { get; protected set; }
+
+        
         public ResultadoReporteViewModel() { }
 
         public ResultadoReporteViewModel(INavigation navigation)

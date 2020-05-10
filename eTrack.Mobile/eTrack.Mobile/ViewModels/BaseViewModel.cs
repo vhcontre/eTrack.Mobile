@@ -12,21 +12,47 @@ namespace eTrack.Mobile.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        private string _message;
+        private bool _isContentEnabled;
+        private double _contentOpacity;
+        bool _isBusy = false;
+        string _title = string.Empty;
+
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<AssetAuditModel> AssetAuditDb => DependencyService.Get<IDataStore<AssetAuditModel>>();
+
         
-        bool isBusy = false;
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
         }
 
-        string title = string.Empty;
+        
         public string Title
         {
-            get { return title; }
-            set { SetProperty(ref title, value); }
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
         }
+
+
+        public bool IsContentEnabled
+        {
+            get { return _isContentEnabled; }
+            set
+            {
+                var opacity = value ? 1 : 0.5;
+                ContentOpacity = opacity;
+                SetProperty(ref _isContentEnabled, value);
+            }
+        }
+
+        public double ContentOpacity
+        {
+            get { return _contentOpacity; }
+            set { SetProperty(ref _contentOpacity, value); }
+        }
+
 
         public virtual Command BackCommand
         {
@@ -39,7 +65,8 @@ namespace eTrack.Mobile.ViewModels
             }
         }
 
-        private string _message;
+        
+
         public string Message
         {
             get

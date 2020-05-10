@@ -3,27 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            
              mc:Ignorable="d" NavigationPage.HasBackButton="False"             
              x:Class="eTrack.Mobile.Views.LoginPage" Title="{Binding Title}">
-    <ContentPage.Content>
-        <StackLayout Padding="10,0">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,1,0,1" VerticalOptions="FillAndExpand">
-                    <Image Source="efalcom_logo.png" VerticalOptions="Center" HeightRequest="90" />
-                </ContentView>
-            </StackLayout>
-            <Label FontSize="Large" HorizontalOptions="Center" Text="Ingrese datos de usuario" />
-            <Frame>
-                <StackLayout>
-                    <Entry Text="{Binding UsuarioModel.UserName, Mode=TwoWay}" Placeholder="Usuario" HorizontalOptions="Fill" x:Name="txtUserName" ReturnType="Send" >
-                    </Entry>
-                    <Entry Text="{Binding UsuarioModel.Password, Mode=TwoWay}" Placeholder="Contraseña" IsPassword="true" HorizontalOptions="Fill" />
-                    <Button Text="Ingresar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding LoginCommand}" />
-                    <Button Text="Cerrar" TextColor="White"  BackgroundColor="{StaticResource LightTextColor}" HorizontalOptions="Fill" Command="{Binding CloseCommand}" />
-                    <Label TextColor="Red" FontSize="Medium" Text="{Binding Message}"></Label>
+
+    <!--Opacity="{Binding ContentOpacity}" IsEnabled="{Binding IsContentEnabled}"-->
+    <!--<ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout Padding="10,0"  
+                         AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,1,0,1" VerticalOptions="FillAndExpand">
+                        <Image Source="efalcom_logo.png" VerticalOptions="Center" HeightRequest="90" />
+                    </ContentView>
                 </StackLayout>
-            </Frame>
+                <Label FontSize="Large" HorizontalOptions="Center" Text="Ingrese datos de usuario" />
+                <Frame>
+                    <StackLayout>
+                        <Entry Text="{Binding UserName, Mode=TwoWay}" Placeholder="Usuario" HorizontalOptions="Fill" />
+                        <Entry Text="{Binding UserPassword, Mode=TwoWay}" Placeholder="Contraseña" IsPassword="true" HorizontalOptions="Fill" />
+                        <Button Text="Ingresar" TextColor="White" Font="Bold,18" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding LoginCommand}" />
+                        <Button Text="Cerrar" TextColor="White" Font="Bold,18" BackgroundColor="{StaticResource LightTextColor}" HorizontalOptions="Fill" Command="{Binding CloseCommand}" />
+                        <Label TextColor="Red" FontSize="Medium" Text="{Binding Message}"></Label>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            --><!-- Indicador de actividad --><!--
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" />
+        </AbsoluteLayout>
+    </ContentPage.Content>-->
+
+
+    <NavigationPage.TitleView>
+        <StackLayout Margin="0,0,4,0" Orientation="Horizontal">
+            <Label Text="{Binding Title}"></Label>
         </StackLayout>
-    </ContentPage.Content>
+    </NavigationPage.TitleView>
+    <AbsoluteLayout>
+        <StackLayout Spacing="0" Margin="10,35,10,10"  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <Label Text="Usuario" HorizontalOptions="Start" FontAttributes="Bold" />
+            <Entry Text="{Binding UserName,Mode=TwoWay}" Placeholder="ingrese su nombre de usuario" HeightRequest="40" MaxLength="30" />
+            <Label Text="Contraseña" HorizontalOptions="Start" FontAttributes="Bold" />
+            <Entry Text="{Binding UserPassword,Mode=TwoWay}" IsPassword="true" Placeholder="ingrese su contraseña" HeightRequest="40" MaxLength="20" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Text="INGRESAR" Command="{Binding LoginCommand}" />
+            </Grid>
+        </StackLayout>
+
+        <!-- Indicador de actividad -->
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" />
+    </AbsoluteLayout>
 </ContentPage>

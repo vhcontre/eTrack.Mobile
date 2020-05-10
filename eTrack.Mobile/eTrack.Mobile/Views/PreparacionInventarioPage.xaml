@@ -39,8 +39,7 @@
             <StackLayout Spacing="20" Padding="15">
                 <ScrollView>
                     <StackLayout Padding="10,0">
-                        <ListView x:Name="ContactsList" 
-                          ItemsSource="{Binding Source={x:Reference ContentPage1}, Path=BindingContext.MyList}" IsVisible="True">
+                        <ListView x:Name="ContactsList" ItemsSource="{Binding Source={x:Reference ContentPage1}, Path=BindingContext.MyList}" IsVisible="True">
                             <ListView.Header >
                                 <StackLayout Orientation="Horizontal ">
                                     <Label Text="Activos fijos" FontSize="Medium" HorizontalTextAlignment="Center" />

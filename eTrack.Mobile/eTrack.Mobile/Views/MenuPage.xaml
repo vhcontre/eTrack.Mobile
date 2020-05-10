@@ -6,57 +6,53 @@
              mc:Ignorable="d" NavigationPage.HasBackButton="False" Title="Menú principal"
              x:Class="eTrack.Mobile.Views.MenuPage">
 
-    <!--<NavigationPage.TitleView>
-        <Label Text="Menú principal" HorizontalOptions="End" TextColor="White" Font="Bold,20"/>
-    </NavigationPage.TitleView>-->
-    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Salir" Command="{Binding ExitCommand}"   />
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="20">
-
+    <StackLayout>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand">
-                    <Image Source="efalcom_logo.png" VerticalOptions="Center" HeightRequest="90" />
+                    <Image Source="efalcom_logo.png" VerticalOptions="Center" HeightRequest="80" />
                 </ContentView>
             </StackLayout>
         </StackLayout>
-        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-            <CollectionView ItemsSource="{Binding Items}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="35" />
-                                    <RowDefinition Height="35" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70" />
-                                    <ColumnDefinition Width="80" />
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.RowSpan="2" 
-                                   Source="{Binding Icon}"
-                                   Aspect="AspectFill"
-                                   HeightRequest="60" 
-                                   WidthRequest="60" />
-                                <Label Grid.Column="1" FontAttributes="Bold" LineBreakMode="TailTruncation" />
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Text}" LineBreakMode="TailTruncation" FontAttributes="Bold" VerticalOptions="End" />
-
-
+        <!--<RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">-->
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Grid Grid.Row="0" BackgroundColor="#fafafa"  Padding="0,1,0,0">
+                            <StackLayout HorizontalOptions="Center">
+                            </StackLayout>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <StackLayout>
+                                    <Image Source="{Binding Icon}"  WidthRequest="90" />
+                                </StackLayout>
                             </Grid>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
+                            <Grid Grid.Row="1" Grid.Column="0">
+                                <StackLayout>
+                                    <Label Text="{Binding Text}" HorizontalOptions="Center" Font="Bold,15"  />
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
 
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--</RefreshView>-->
     </StackLayout>
 </ContentPage>

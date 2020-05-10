@@ -1,6 +1,4 @@
-﻿using eTrack.Mobile.Models;
-using eTrack.Mobile.Services;
-using eTrack.Mobile.ViewModels;
+﻿using eTrack.Mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +11,10 @@ using Xamarin.Forms.Xaml;
 namespace eTrack.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultadoHistorialPage : ContentPage
+    public partial class ResultadoHistorialTabbedPage : TabbedPage
     {
         readonly ResultadoHistorialViewModel viewModel;
-        public ResultadoHistorialPage()
+        public ResultadoHistorialTabbedPage()
         {
             InitializeComponent();
             BindingContext = viewModel = new ResultadoHistorialViewModel(Navigation);
@@ -29,6 +27,5 @@ namespace eTrack.Mobile.Views
             Application.Current.MainPage.DisplayAlert("AssetAuditModel", item.Id, "Ok");
 
         }
-        
     }
 }

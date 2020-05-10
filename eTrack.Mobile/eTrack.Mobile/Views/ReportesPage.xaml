@@ -39,8 +39,8 @@
                 </Picker>
                 <!--<Label Text="Fecha" FontSize="Medium" />-->
                 <DatePicker Format="dd/MM/yyyy" />
-                <Button Text="Aceptar" x:Name="btnAceptar" TextColor="White" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill"
-                                Command="{Binding AcceptCommand}"  />
+                <Button Text="Aceptar" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" TextColor="White" Font="Bold,18" 
+                                Command="{Binding AcceptCommand}" />
                                  
                 <!--<Grid x:Name="MainGrid">
                     <Grid.RowDefinitions>

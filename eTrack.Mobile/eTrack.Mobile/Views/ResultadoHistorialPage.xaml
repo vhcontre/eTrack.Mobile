@@ -4,40 +4,115 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="eTrack.Mobile.Views.ResultadoHistorialPage">
+             x:Class="eTrack.Mobile.Views.ResultadoHistorialPage" NavigationPage.HasBackButton="False" Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salir" />
+        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Color x:Key="Accent">#96d1ff</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
+            <Style x:Key="StackStyle" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#96d1ff"/>
+            </Style>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Italic" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="10,0">
-                <Label FontSize="Large" HorizontalOptions="Center" Text="Historial de auditorías" />
-                <StackLayout Spacing="20" Padding="15">
-                    <Label FontSize="Medium" HorizontalOptions="Start" Text="DataGrid Master" />
-                    <Label FontSize="Medium" HorizontalOptions="Start" Text="Picture Box" />
-                    <Grid x:Name="MainGrid">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.50*" />
-                            <ColumnDefinition Width="0.50*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Text="Editar" WidthRequest="150" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" 
-                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                        <Button Text="Eliminar" WidthRequest="150" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand" 
-                            HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
-                    </Grid>
-                </StackLayout>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+    <StackLayout Spacing="20" Padding="15">
+        <Label FontSize="Medium" HorizontalOptions="Center" Text="Resultado del historial" FontAttributes="Bold" />
+        <!--<RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadAssetsAuditCommand}">-->
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="1" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Style="{StaticResource StackStyle}">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" FontSize="18" FontAttributes="Bold" Style="{StaticResource LabelStyle}" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding AssetId}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding Description}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />                            
+                        </Grid>
+                        <StackLayout BackgroundColor="#fafafa">
+                            <Label Text="" ></Label>
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TappedOnClick" ></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--</RefreshView>-->
+
+        <!--<ListView HasUnevenRows="true" SelectionMode="Single" ItemsSource="{Binding Items}" VerticalOptions="FillAndExpand" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Style="{StaticResource StackStyle}">
+                                <Label Text="{Binding Id}"  FontSize="18" FontAttributes="Bold" Style="{StaticResource LabelStyle}"/>
+                                <Label Text="{Binding AssetId}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                                <Label Text="{Binding Description}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                                <StackLayout BackgroundColor="#fafafa">
+                                    <Label Text="" ></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell.View>
+                       
+                        -->
+        <!--<ViewCell.View>
+                            <ContentView Padding="10" Margin="0,-10,0,0" Style="{StaticResource StackStyle}" >
+                                <Label FontSize="18">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Id}" FontAttributes="Bold" TextColor="#f35e20" />
+                                                <Span Text="  |  "   />
+                                                <Span Text="{Binding AssetId}"   />
+                                                <Span Text="  |  "   />
+                                                <Span Text="{Binding Description}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </ContentView>
+                        </ViewCell.View>-->
+        <!--
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+        <Label FontSize="Medium" HorizontalOptions="Start" Text="Picture Box" />
+
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Editar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18"
+                                Command="{Binding EditCommand}" 
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+            <Button Text="Eliminar" VerticalOptions="CenterAndExpand"  BackgroundColor="{StaticResource Accent}" TextColor="White" Font="Bold,18"
+                                Command="{Binding DeleteCommand}"
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"/>
+        </Grid>
+    </StackLayout>
+
 </ContentPage>

@@ -26,22 +26,24 @@
                         AutoSize="TextChanges" HorizontalOptions="Fill"
                         Placeholder="Descripción del activo (Max. 500 Caracteres)" 
                         FontSize="Medium" />
+                    <Button Text="Auditar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" Command="{Binding NavigationPage}" TextColor="White" Font="Bold,18" />
+
                     <Grid x:Name="MainGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.33*" />
-                            <ColumnDefinition Width="0.33*" />
-                            <ColumnDefinition Width="0.33*" />
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
                         </Grid.ColumnDefinitions>
-                        <Button Text="Auditar" HeightRequest="80" x:Name="btn1" 
-                                VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}"
-                                Command="{Binding NavigationPage}" 
-                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                        <Button Text="Buscar" HeightRequest="80" x:Name="btn2" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
-                        <Button Text="Historial" HeightRequest="80" x:Name="btn3" VerticalOptions="CenterAndExpand"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+
+                        <Button Text="Buscar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}" TextColor="White" Font="Bold,18"
+                                Command="{Binding BuscarPageCommand}" 
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+                        <Button Text="Historial" VerticalOptions="CenterAndExpand"  BackgroundColor="{StaticResource Accent}" TextColor="White" Font="Bold,18"
+                                Command="{Binding ResultadoHistorialPageCommand}"
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"/>
                     </Grid>
                     
                     

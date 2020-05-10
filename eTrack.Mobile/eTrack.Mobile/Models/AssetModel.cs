@@ -5,8 +5,7 @@ namespace eTrack.Mobile.Models
 {
     public class AssetModel : IEntity
     {
-        [Key]
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Code { get; set; }
         public string Tag { get; set; }
         public string SapId { get; set; }

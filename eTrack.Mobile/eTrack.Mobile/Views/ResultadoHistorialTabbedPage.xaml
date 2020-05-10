@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:views="clr-namespace:eTrack.Mobile.Views" NavigationPage.HasBackButton="False"
+            mc:Ignorable="d" x:Class="eTrack.Mobile.Views.ResultadoHistorialTabbedPage" Title="Historial de auditoría">
+
+
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Resultado">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
+        </ContentPage.ToolbarItems>
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <Style x:Key="StackStyle" TargetType="StackLayout">
+                    <Setter Property="BackgroundColor" Value="#96d1ff"/>
+                </Style>
+                <Style x:Key="LabelStyle" TargetType="Label">
+                    <Setter Property="TextColor" Value="Black"/>
+                    <Setter Property="FontAttributes" Value="Italic" />
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
+        <StackLayout Spacing="20" Padding="15">
+            <!--<Label FontSize="Medium" HorizontalOptions="Center" Text="Resultado del historial" FontAttributes="Bold" />-->
+            <!--<RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadAssetsAuditCommand}">-->
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Style="{StaticResource StackStyle}">
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Id}" FontSize="18" FontAttributes="Bold" Style="{StaticResource LabelStyle}" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding AssetId}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding Description}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                            </Grid>
+                            <StackLayout BackgroundColor="#fafafa">
+                                <Label Text="" ></Label>
+                            </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TappedOnClick" ></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--</RefreshView>-->
+
+            <!--<ListView HasUnevenRows="true" SelectionMode="Single" ItemsSource="{Binding Items}" VerticalOptions="FillAndExpand" CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Style="{StaticResource StackStyle}">
+                                <Label Text="{Binding Id}"  FontSize="18" FontAttributes="Bold" Style="{StaticResource LabelStyle}"/>
+                                <Label Text="{Binding AssetId}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                                <Label Text="{Binding Description}" FontSize="Medium" Margin="0,-5,0,0" Style="{StaticResource LabelStyle}" />
+                                <StackLayout BackgroundColor="#fafafa">
+                                    <Label Text="" ></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell.View>
+                       
+                        -->
+            <!--<ViewCell.View>
+                            <ContentView Padding="10" Margin="0,-10,0,0" Style="{StaticResource StackStyle}" >
+                                <Label FontSize="18">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Id}" FontAttributes="Bold" TextColor="#f35e20" />
+                                                <Span Text="  |  "   />
+                                                <Span Text="{Binding AssetId}"   />
+                                                <Span Text="  |  "   />
+                                                <Span Text="{Binding Description}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </ContentView>
+                        </ViewCell.View>-->
+            <!--
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+            
+
+            <Grid x:Name="MainGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Editar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18"
+                                Command="{Binding EditCommand}" 
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="Eliminar" VerticalOptions="CenterAndExpand"  BackgroundColor="{StaticResource Accent}" TextColor="White" Font="Bold,18"
+                                Command="{Binding DeleteCommand}"
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Picture Box">
+        <StackLayout Spacing="20" Padding="15">
+            <Image Source="efalcom_logo.png" VerticalOptions="Center" HeightRequest="90" />
+            <Button Text="Ok" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18"
+                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+        </StackLayout>
+    </ContentPage>
+    <!--<TabbedPage.Children>
+        <NavigationPage Title="Historial de auditoría">
+            <x:Arguments>
+                <views:ResultadoHistorialPage />
+            </x:Arguments>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+        </NavigationPage>
+        <NavigationPage Title="Imágen">
+            <x:Arguments>
+                <views:AboutPage />
+            </x:Arguments>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_about.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+        </NavigationPage>
+    </TabbedPage.Children>-->
+</TabbedPage>
