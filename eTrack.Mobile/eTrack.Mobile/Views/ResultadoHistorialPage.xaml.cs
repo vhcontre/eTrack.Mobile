@@ -20,15 +20,14 @@ namespace eTrack.Mobile.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new ResultadoHistorialViewModel(Navigation);
+            lblCount.Text = string.Format("{0} filas.", viewModel.Items.Count);
         }
-
-        private void TappedOnClick(object sender, EventArgs e)
+        void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var layout = (BindableObject)sender;
-            var item = (AssetAuditModel)layout.BindingContext;
-            Application.Current.MainPage.DisplayAlert("AssetAuditModel", item.Id, "Ok");
-
+            string current = (e.CurrentSelection.FirstOrDefault() as AssetAuditModel)?.AssetId;
+            currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(current) ? "[Sin selección]" : current;
+            btnEdit.CommandParameter = current;
+            btnDelete.CommandParameter = current;
         }
-        
     }
 }

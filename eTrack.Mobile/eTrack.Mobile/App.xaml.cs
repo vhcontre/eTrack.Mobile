@@ -15,6 +15,7 @@ namespace eTrack.Mobile
 
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<AssetAuditService>();
+            DependencyService.Register<AssetService>();
             //MainPage = new MainPage();
             //MainPage = new NavigationPage(new SeleccionModoPage());
             MainPage = new NavigationPage(new MenuPage());

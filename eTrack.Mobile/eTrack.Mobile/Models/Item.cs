@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eTrack.Mobile.Services;
+using System;
 
 namespace eTrack.Mobile.Models
 {
@@ -8,5 +9,5 @@ namespace eTrack.Mobile.Models
         public string Text { get; set; }
         public string Description { get; set; }
         public string Icon { get; set; }
-    }
+    }    
 }

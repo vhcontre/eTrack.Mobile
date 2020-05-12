@@ -6,9 +6,9 @@
              mc:Ignorable="d" NavigationPage.HasBackButton="False" Title="Menú principal"
              x:Class="eTrack.Mobile.Views.MenuPage">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Salir" Command="{Binding ExitCommand}"   />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <StackLayout>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">

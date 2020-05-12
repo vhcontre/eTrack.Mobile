@@ -20,6 +20,9 @@
         public static readonly string DbConnectionError = "La conexión a la base de datos ha fallado.\r\nVerifique que tenga conexión a la red y que la configuración sea correcta.";
         public static readonly string NetworkAccessError = "Error de acceso a la red.\r\nVerifique que tenga conexión a la red y que la configuración sea correcta.";
 
+
+        public static readonly string AssetAuditDeleteConfirmation = "Eliminará el ítem seleccionado {0}.\r\n\r\n¿Desea continuar?";
+
         // Despacho
         public static readonly string PickingCancellationIfContinueWarning = "Si continúa se cancelará el despacho en curso...\r\n\r\n¿Desea cancelarlo?";
         public static readonly string IncompletePickingFinishingWarning = "El despacho no esta completo...\r\n\r\n¿Desea finalizarlo incompleto?";

@@ -19,16 +19,21 @@ namespace eTrack.Mobile.ViewModels
         string _title = string.Empty;
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-        public IDataStore<AssetAuditModel> AssetAuditDb => DependencyService.Get<IDataStore<AssetAuditModel>>();
+        public IDataStore<AssetAuditModel> AssetAuditDb => DependencyService.Get<IDataStore<AssetAuditModel>>();        
+        //public IDataStore<AssetModel> AssetDb => DependencyService.Get<IDataStore<AssetModel>>();
 
         
         public bool IsBusy
         {
             get { return _isBusy; }
-            set { SetProperty(ref _isBusy, value); }
+            set
+            {
+                IsContentEnabled = !value;
+                SetProperty(ref _isBusy, value);
+            }
         }
 
-        
+
         public string Title
         {
             get { return _title; }
@@ -65,7 +70,7 @@ namespace eTrack.Mobile.ViewModels
             }
         }
 
-        
+
 
         public string Message
         {

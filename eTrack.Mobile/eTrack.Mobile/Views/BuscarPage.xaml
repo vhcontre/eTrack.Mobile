@@ -6,17 +6,15 @@
              mc:Ignorable="d" x:Class="eTrack.Mobile.Views.BuscarPage"
              NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
-    </ContentPage.ToolbarItems>
-    
+    </ContentPage.ToolbarItems>-->
+
     <ContentPage.Content>
         <StackLayout Padding="10,0">
-            <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Búsqueda de activo" />-->
             <StackLayout Spacing="20" Padding="15">
-
                 <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="Bold,20"/>
-                <Picker x:Name="pickerBuscar" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
+                <!--<Picker x:Uid="pickerBuscar" x:Name="pickerBuscar" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}" SelectedIndexChanged="Find_OnPickerSelectedIndexChanged">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Tag</x:String>
@@ -24,7 +22,9 @@
                             <x:String>Fecha de alta</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
-                </Picker>
+                </Picker>-->
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding ListSearchArgument}" SelectedItem="{Binding SelectedName, Mode=TwoWay}" />
+                
                 <Label Text="Aplicar filtro" FontSize="Medium" Font="Bold,20"/>
                 <Picker x:Name="pickerFiltros" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
                     <Picker.ItemsSource>
@@ -38,8 +38,7 @@
                     </Picker.ItemsSource>
                 </Picker>
                 <Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
-                <DatePicker Format="dd/MM/yyyy" />
-                <!--<Label x:Name="MainLable" HorizontalOptions="Center" FontSize="30" TextColor="Black"></Label>-->
+                <DatePicker Format="dd/MM/yyyy"/>
                 <Button Text="Aceptar" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" TextColor="White" Font="Bold,18" />
                 <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
             </StackLayout>

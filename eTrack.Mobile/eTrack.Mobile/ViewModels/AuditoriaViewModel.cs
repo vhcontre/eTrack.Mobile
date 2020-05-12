@@ -1,4 +1,6 @@
-﻿using eTrack.Mobile.Services;
+﻿using Acr.UserDialogs;
+using eTrack.Mobile.Models;
+using eTrack.Mobile.Services;
 using eTrack.Mobile.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -10,13 +12,46 @@ using Xamarin.Forms;
 
 namespace eTrack.Mobile.ViewModels
 {
+    public class ResultadoBusquedaViewModel : BaseViewModel
+    {
+        public INavigation Navigation { get; set; }
+        public ObservableCollection<AssetModel> Items { get; set; }
+        public Command LoadAssetsCommand { get; set; }
 
+        public ResultadoBusquedaViewModel() { }
+
+        public ResultadoBusquedaViewModel(INavigation navigation)
+        {
+            Title = "Resultado de la búsqueda";
+            Items = new ObservableCollection<AssetModel>();
+            this.Navigation = navigation;
+            OnLoadItemsCommand().ConfigureAwait(false);
+
+        }
+        private async Task OnLoadItemsCommand()
+        {
+            IsBusy = true;
+            try
+            {
+                Items.Clear();
+                var AssetDb = DependencyService.Get<IDataStore<AssetModel>>();
+                var items = await AssetDb.GetItemsAsync(true);
+                foreach (var item in items)
+                    Items.Add(item);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+    }
     public class ResultadoHistorialViewModel : BaseViewModel
     {
         public INavigation Navigation { get; set; }
-        public ICommand EditCommand { get; protected set; }
-        public ICommand DeleteCommand { get; protected set; }
-
         public ObservableCollection<AssetAuditModel> Items { get; set; }
         public Command LoadAssetsAuditCommand { get; set; }
 
@@ -26,29 +61,45 @@ namespace eTrack.Mobile.ViewModels
         {
             Title = "Historial de auditorías";
             Items = new ObservableCollection<AssetAuditModel>();
-            //this.LoadAssetsAuditCommand = new Command(async () => await ExecuteLoadItemsCommand());
-            _ = ExecuteLoadItemsCommand();
-
             this.Navigation = navigation;
-            this.EditCommand = new Command(async () => await SaveCommand());
-            this.DeleteCommand = new Command(async () => await Application.Current.MainPage.DisplayAlert("Eliminar", "Se hizo clic en eliminar", "Ok"));
+            OnLoadItemsCommand().ConfigureAwait(false);
+
         }
-        private static async Task SaveCommand()
+        public ICommand EditCommand
         {
-            await Application.Current.MainPage.DisplayAlert("Command Aceptar", "Se hizo clic en Aceptar", "Yes", "No");
+            get
+            {
+                return new Command<string>((parameter) => OnSaveCommand(parameter));
+            }
         }
-        private async Task ExecuteLoadItemsCommand()
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new Command<string>((parameter) => OnRemoveCommand(parameter));
+            }
+        }
+        private void OnSaveCommand(string parameter)
+        {
+            Application.Current.MainPage.DisplayAlert("Editar auditoria", parameter, "Ok");
+        }
+        private async void OnRemoveCommand(string parameter)
+        {
+            var result = await UserDialogs.Instance.ConfirmAsync(string.Format(UserMessageResources.AssetAuditDeleteConfirmation, parameter), "Eliminar", "Si", "No");
+
+            if (result)
+                await Application.Current.MainPage.DisplayAlert("Auditoria Eliminada", parameter, "Ok");
+
+        }
+        private async Task OnLoadItemsCommand()
         {
             IsBusy = true;
-
             try
             {
                 Items.Clear();
                 var items = await AssetAuditDb.GetItemsAsync(true);
                 foreach (var item in items)
-                {
                     Items.Add(item);
-                }
             }
             catch (Exception ex)
             {
@@ -73,21 +124,8 @@ namespace eTrack.Mobile.ViewModels
             Title = "Auditoria";
             this.Navigation = navigation;
             this.NavigationPage = new Command(async () => await Navigation.PushAsync(new AuditarPage()));
-
-            //this.ResultadoHistorialPageCommand = new Command(async () => await Navigation.PushAsync(new ResultadoHistorialPage()));
-            this.ResultadoHistorialPageCommand = new Command(() =>
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new ResultadoHistorialTabbedPage());
-            });
-            //new Command(async () => 
-            //await Navigation.PushAsync(new ResultadoHistorialTabbedPage()));
-
-
-
-
-            //Application.Current.MainPag 
+            this.ResultadoHistorialPageCommand = new Command(async () => await Navigation.PushAsync(new ResultadoHistorialPage()));
             this.BuscarPageCommand = new Command(async () => await Navigation.PushAsync(new BuscarPage()));
-            //BuscarPageCommand
         }
     }
 }

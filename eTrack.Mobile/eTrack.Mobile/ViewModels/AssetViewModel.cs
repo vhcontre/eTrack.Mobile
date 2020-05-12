@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using eTrack.Mobile.Models;
 using eTrack.Mobile.Views;
@@ -162,7 +163,7 @@ namespace eTrack.Mobile.ViewModels
         {
             Title = "Búsqueda de activo";
             this.Navigation = navigation;
-            var _assetModel = new AssetModel();          
+            var _assetModel = new AssetModel();
             this.AssetModel = _assetModel;
         }
 
@@ -170,16 +171,50 @@ namespace eTrack.Mobile.ViewModels
         {
             get
             {
-                return new Command(() =>
-                {
-                    FindAsset();
-                });
+                
+                return new Command(() => {
+                    var data = this.SelectedName; 
+                    Navigation.PushAsync(new ResultadoBusquedaPage()); });
             }
         }
-        private void FindAsset()
+
+
+        #region Buscar por Tag, Código o Fecha
+        public IList<string> ListSearchArgument
         {
-            // Acceder a base de datos y guardar la información
-            Application.Current.MainPage.DisplayAlert("Búsqueda", "Búsqueda de activo", "Yes");
+            get
+            {
+                return new List<string>() { "Tag", "Código", "Fecha de alta" };
+            }
         }
+        string selectedArgName;
+        public string SelectedName
+        {
+            get { return selectedArgName; }
+            set
+            {
+                if (selectedArgName != value)
+                {
+                    selectedArgName = value;
+                    OnPropertyChanged();
+                    //OnPropertyChanged("SelectedItem");
+                }
+            }
+        }
+        //private string SelectedItem
+        //{
+        //    get
+        //    {
+        //        if (string.IsNullOrWhiteSpace(selectedArgName))
+        //        {
+        //            return selectedArgName;
+        //        }
+        //        return "Tag";
+        //    }
+        //}
+        #endregion
+
+
+
     }
 }

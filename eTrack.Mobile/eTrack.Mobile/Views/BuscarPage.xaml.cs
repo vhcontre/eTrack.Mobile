@@ -21,4 +21,17 @@ namespace eTrack.Mobile.Views
 
         
     }
+
+    //void Find_OnPickerSelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    var picker = (Picker)sender;
+    //    int selectedIndex = picker.SelectedIndex;
+    //    if (selectedIndex != -1)
+    //    {
+    //        var text = (string)picker.ItemsSource[selectedIndex];
+    //        DisplayAlert("ItemsSource", text, "Ok");
+    //    }
+    //}
+
+
 }

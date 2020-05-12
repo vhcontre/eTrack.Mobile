@@ -58,6 +58,7 @@ namespace eTrack.Mobile.ViewModels
             IsBusy = false;
             CleanupUserControls();
             LoginCommand = new Command(execute: OnLoginCommand);
+            
         }
 
         public Command CloseCommand
