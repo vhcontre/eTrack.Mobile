@@ -5,83 +5,62 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" x:Class="eTrack.Mobile.Views.EditarPage"
              NavigationPage.HasBackButton="False" Title="{Binding Title}">
-
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
+        <ToolbarItem Text="CAM"  />
     </ContentPage.ToolbarItems>
-
-    <ContentPage.Content>
+    <ScrollView>
         <StackLayout Padding="10,0">
-            <StackLayout Spacing="20" Padding="15">
-                <Label Text="Tag Id:" FontSize="Medium" Font="Bold,20"/>
-                <Label Text="{Binding AssetModel.Tag, Mode=TwoWay}" d:Text="Tag Id" FontSize="Medium"/>
-                <Grid x:Name="MainGridAsset1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.50*" />
-                        <ColumnDefinition Width="0.50*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Code:" FontSize="Medium" Grid.Row="0" Grid.Column="0" Font="Bold,20"/>
-                    <Label Text="{Binding AssetModel.Code, Mode=TwoWay}" d:Text="Código" FontSize="Medium" Grid.Row="0" Grid.Column="1"/>
-                    <Label Text="SapId:" FontSize="Medium" Grid.Row="0" Grid.Column="2" Font="Bold,20"/>
-                    <Label Text="{Binding AssetModel.SapId, Mode=TwoWay}" d:Text="Sap Id" FontSize="Medium" Grid.Row="0" Grid.Column="3" />
-                </Grid>
-                <Label Text="Imágen:" FontSize="Medium" />
-                <Image>
+            <Editor Text="{Binding TagIdActual}" Placeholder="Tag Id Actual"
+                            AutoSize="TextChanges" HorizontalOptions="Fill" IsReadOnly="True" FontSize="Medium" />
 
-                </Image>
+            <Editor Text="{Binding AssetModel.Tag, Mode=TwoWay}" Placeholder="TagId Nuevo" AutoSize="TextChanges" HorizontalOptions="Fill" FontSize="Medium" />
 
-                
-                <Picker x:Name="picker" Title="Seleccione una Localización" TitleColor="Blue">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Norte</x:String>
-                            <x:String>Blue</x:String>
-                            <x:String>Moreno</x:String>
-                            <x:String>Golden</x:String>
-                            <x:String>Howler</x:String>
-                            <x:String>Castelar</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+            <Grid x:Name="GridCodeCodeSapId">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.50*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Editor Text="{Binding AssetModel.Code, Mode=TwoWay}"
+                                AutoSize="TextChanges" HorizontalOptions="FillAndExpand"
+                                Placeholder="Código" VerticalOptions="CenterAndExpand" FontSize="Medium" Grid.Row="0" Grid.Column="0" />
+                <Editor Text="{Binding AssetModel.SapId}" 
+                                AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                                Placeholder="Sap Id" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+            </Grid>
 
-                <Grid x:Name="MainGridAsset2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.50*" />
-                        <ColumnDefinition Width="0.50*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Centro de costo:" FontSize="Medium" Grid.Row="0" Grid.Column="0" Font="Bold,20"/>
-                    <Label Text="{Binding AssetModel.CostCenterName, Mode=TwoWay}" d:Text="Código" FontSize="Medium" Grid.Row="0" Grid.Column="1"/>
-                </Grid>
+            <Grid x:Name="GridLocationCostCenterName">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.50*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
 
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding LocationList}" SelectedItem="{Binding LocationSelectedItem, Mode=TwoWay}" 
+                    TitleColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="0"/>
 
-                <Button Text="Editar" Command="{Binding EditCommand}" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" />
-                <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding CostCenterList}" SelectedItem="{Binding CostCenterSelectedItem, Mode=TwoWay}" 
+                    TitleColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="1"/>
 
+            </Grid>
 
-                <Grid x:Name="MainGridAsset3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+            <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="Imágen" HorizontalOptions="Start"></Label>
+            <Image 
+                               Source="{Binding AssetModel.FilePath}" 
+                               Aspect="AspectFit"
+                               HeightRequest="100" 
+                               WidthRequest="100" />
+            <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="Descripción" HorizontalOptions="Start"></Label>
+            <Editor Text="{Binding AssetModel.Description, Mode=TwoWay}" AutoSize="TextChanges" HorizontalOptions="Fill" Placeholder="Descripción" FontSize="Medium" />
 
-                    <Button x:Name="btn1" VerticalOptions="CenterAndExpand" Margin="-5,-7,-5,-6" Grid.Row="0" Grid.Column="0" Text="Previo"/>
-
-                    <Button x:Name="btn2" VerticalOptions="CenterAndExpand" Margin="-5,-7,-5,-6" Grid.Row="0" Grid.Column="1" Text="Próximo"/>
-                </Grid>
-
-            </StackLayout>
+            <Button Text="Editar" Command="{Binding EditCommand}" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Font="Bold,18" />
+            <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

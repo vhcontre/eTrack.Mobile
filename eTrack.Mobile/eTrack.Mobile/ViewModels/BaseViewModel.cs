@@ -109,5 +109,77 @@ namespace eTrack.Mobile.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        #region Buscar por Tag, Código o Fecha
+        public IList<string> SearchArgumentList { get; set; }
+        string _argName;
+        public string SelectedItem
+        {
+            get { return _argName; }
+            set
+            {
+                if (_argName != value)
+                {
+                    if (string.IsNullOrWhiteSpace(value))
+                        _argName = "Tag";
+                    _argName = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        #endregion
+
+        #region Aplicar filtros
+        public IList<string> SearchArgumentFilters { get; set; }
+        string _argFilter;
+        public string SelectedFilter
+        {
+            get { return _argFilter; }
+            set
+            {
+                if (_argFilter != value)
+                {
+                    if (string.IsNullOrWhiteSpace(value))
+                        _argFilter = "Menor igual";
+                    _argFilter = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        #endregion
+
+        #region Cost Center List
+        public IList<string> CostCenterList { get; set; }
+        string _costCenter;
+        public string CostCenterSelectedItem
+        {
+            get { return _costCenter; }
+            set
+            {
+                if (_costCenter != value)
+                {
+                    _costCenter = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        #endregion
+
+        #region Location List
+        public IList<string> LocationList { get; set; }
+        string _locationList;
+        public string LocationSelectedItem
+        {
+            get { return _locationList; }
+            set
+            {
+                if (_locationList != value)
+                {
+                    _locationList = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        #endregion
     }
 }

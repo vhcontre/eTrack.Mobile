@@ -7,14 +7,13 @@
              x:Class="eTrack.Mobile.Views.ConfigPage"
              NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
-    </ContentPage.ToolbarItems>
-   
+    </ContentPage.ToolbarItems>-->
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
-                <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Configuración" />-->
                 <StackLayout Spacing="20" Padding="15">
                     <Editor Text=""
                             x:Name="ServidorSQL" 
@@ -26,16 +25,11 @@
                             AutoSize="TextChanges" HorizontalOptions="Fill"
                             Placeholder="Nombre base de datos" 
                             FontSize="Medium" />
-
-                    <!--<Label FontSize="Medium" HorizontalOptions="Center" Text="Iniciar sesión SQL" BackgroundColor="{StaticResource LightTextColor}" />-->
                     <Entry x:Name="UserNameSql" Text="" Placeholder="Usuario SQL" IsPassword="true" HorizontalOptions="Fill" FontSize="Medium" />
                     <Entry x:Name="PasswordSql" Text="" Placeholder="Contraseña" IsPassword="true" HorizontalOptions="Fill" FontSize="Medium" />
-                    <Button Margin="0,10,0,0" Text="Verificar la conexión con el Servidor"
+                    <Button Margin="0,10,0,0" Text="Verificar conexión del Servidor"
                         BackgroundColor="{StaticResource LightTextColor}"
-                        TextColor="White" />
-
-                    <!--<Label FontSize="Medium" HorizontalOptions="Start" Text="Potencia RFID" BackgroundColor="{StaticResource LightTextColor}" />-->
-                    
+                        TextColor="White" Font="Bold,18" />
                     <Label x:Name="displayLabel" Text="{Binding Source={x:Reference slider}, Path=Value, 
                               StringFormat='El valor de la Potencia RFID {0:F0}'}" HorizontalOptions="Center" FontSize="Large" VerticalOptions="CenterAndExpand" />
                     <Slider x:Name="slider" Maximum="360" />
@@ -46,20 +40,18 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.50*" />
-                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
-                    <Button Text="Aceptar" BackgroundColor="{StaticResource Primary}"  WidthRequest="150" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" 
-                            Command="{Binding AcceptCommand}" 
-                            HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Button Text="Info" WidthRequest="150"  BackgroundColor="{StaticResource Accent}" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand"
-                            Command="{Binding NavigationPage}" 
-                            HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+
+                    <Button Text="Aceptar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18"
+                                Command="{Binding AcceptCommand}" 
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+                    <Button Text="Info" VerticalOptions="CenterAndExpand"  BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18"
+                                Command="{Binding NavigationPage}"
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"/>
                 </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
-
-
-
 </ContentPage>

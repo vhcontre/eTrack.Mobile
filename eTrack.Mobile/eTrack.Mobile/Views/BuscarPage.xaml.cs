@@ -18,20 +18,5 @@ namespace eTrack.Mobile.Views
             InitializeComponent();
             BindingContext = new AssetFindViewModel(navigation: Navigation);
         }
-
-        
     }
-
-    //void Find_OnPickerSelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    var picker = (Picker)sender;
-    //    int selectedIndex = picker.SelectedIndex;
-    //    if (selectedIndex != -1)
-    //    {
-    //        var text = (string)picker.ItemsSource[selectedIndex];
-    //        DisplayAlert("ItemsSource", text, "Ok");
-    //    }
-    //}
-
-
 }

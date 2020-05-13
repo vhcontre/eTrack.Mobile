@@ -7,27 +7,19 @@
              mc:Ignorable="d"
              x:Class="eTrack.Mobile.Views.AsociarTagPage"
              xmlns:vm="clr-namespace:eTrack.Mobile.ViewModels" NavigationPage.HasBackButton="False" Title="{Binding Title}">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
-                <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Asociación de TAG" />-->
                 <StackLayout Spacing="20" Padding="15">
-                    <!--<Editor Text="{Binding Asset.Code}"
-                    x:Name="Code"
-                    HeightRequest="100"
-                    AutoSize="TextChanges" HorizontalOptions="Fill"
-                    Placeholder="Código del elemento" 
-                    FontSize="Medium" />-->
                     <Entry Placeholder="Code" x:Name="Code" FontSize="Medium" HorizontalOptions="Fill">
                         <Entry.Behaviors>
                             <local:MaxLengthValidatorBehavior MaxLength="5"/>
                             <local:NumberValidationBehavior/>
                         </Entry.Behaviors>
                     </Entry>
-
                 </StackLayout>
 
                 <Grid x:Name="MainGrid">
@@ -36,19 +28,20 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
-                    <Button BackgroundColor="{StaticResource Accent}" Text="Buscar" x:Name="btnBuscar" VerticalOptions="CenterAndExpand" Command="{Binding NavigationSearchAsset}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
 
-                    <Button BackgroundColor="{StaticResource Accent}" Text="Consultar" x:Name="btnConsultar" VerticalOptions="CenterAndExpand" Command="{Binding NavigationConsultar}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
-
-                    
-
-
+                    <Button Text="Buscar" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}" TextColor="White" Font="Bold,18"
+                                Command="{Binding NavigationSearchAsset}" 
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
+                    <Button Text="Consultar" VerticalOptions="CenterAndExpand"  BackgroundColor="{StaticResource Accent}" TextColor="White" Font="Bold,18"
+                                Command="{Binding NavigationConsultar}"
+                                HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"/>
                 </Grid>
-                <StackLayout Spacing="20" Padding="15">
 
+
+                <StackLayout Spacing="20" Padding="15">
                     <Editor Text="{Binding Asset.Id}"
                     x:Name="Id" 
                     AutoSize="TextChanges" HorizontalOptions="Fill"
@@ -57,7 +50,7 @@
                 </StackLayout>
                 <Button Margin="0,10,0,0" Text="Asociar "
                         BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+                        TextColor="White" Font="Bold,18" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

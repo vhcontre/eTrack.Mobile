@@ -14,32 +14,14 @@
         <StackLayout Padding="10,0">
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="Bold,20"/>
-                <!--<Picker x:Uid="pickerBuscar" x:Name="pickerBuscar" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}" SelectedIndexChanged="Find_OnPickerSelectedIndexChanged">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Tag</x:String>
-                            <x:String>Código</x:String>
-                            <x:String>Fecha de alta</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>-->
-                <Picker Title="Seleccione un ítem" ItemsSource="{Binding ListSearchArgument}" SelectedItem="{Binding SelectedName, Mode=TwoWay}" />
-                
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
+
                 <Label Text="Aplicar filtro" FontSize="Medium" Font="Bold,20"/>
-                <Picker x:Name="pickerFiltros" Title="Seleccione un ítem" TitleColor="{StaticResource Primary}">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Menor igual</x:String>
-                            <x:String>Mayor igual</x:String>
-                            <x:String>Igual</x:String>
-                            <x:String>Distinto</x:String>
-                            <x:String>Todos</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentFilters}" SelectedItem="{Binding SelectedFilter, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
+
                 <Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
                 <DatePicker Format="dd/MM/yyyy"/>
-                <Button Text="Aceptar" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" TextColor="White" Font="Bold,18" />
+                <Button Text="Buscar" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" TextColor="White" Font="Bold,18" />
                 <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
             </StackLayout>
         </StackLayout>

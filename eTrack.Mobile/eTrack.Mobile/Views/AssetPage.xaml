@@ -6,21 +6,19 @@
              mc:Ignorable="d" x:Class="eTrack.Mobile.Views.AssetPage" 
              NavigationPage.HasBackButton="False" Title="{Binding Title}">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10,0">
                 <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Datos del activo" />-->
                 <StackLayout Spacing="20" Padding="15">
-                    <Editor Text="{Binding Asset.Id}"
-                            x:Name="Id" 
-                            AutoSize="TextChanges" HorizontalOptions="Fill"
-                            Placeholder="Tag Id" 
-                            FontSize="Medium" />
-                    <Grid x:Name="MainGridAsset1">
+                    <Editor Text="{Binding AssetModel.Tag, Mode=TwoWay}" Placeholder="Tag Id"
+                            AutoSize="TextChanges" HorizontalOptions="Fill" IsReadOnly="True" FontSize="Medium" />
+
+                    <Grid x:Name="GridCodeCodeSapId">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -29,25 +27,17 @@
                             <ColumnDefinition Width="0.50*" />
                             <ColumnDefinition Width="0.50*" />
                         </Grid.ColumnDefinitions>
-                        <Editor Text="{Binding Asset.Code}"
-                                x:Name="Code" 
+                        <Editor Text="{Binding AssetModel.Code, Mode=TwoWay}" IsReadOnly="True"
                                 AutoSize="TextChanges" HorizontalOptions="FillAndExpand"
-                                Placeholder="Código" VerticalOptions="CenterAndExpand"
-                                FontSize="Medium" Grid.Row="0" Grid.Column="0" />
-                        <Editor Text="{Binding Asset.SapId}"
-                                x:Name="SapId" 
+                                Placeholder="Código" VerticalOptions="CenterAndExpand" FontSize="Medium" Grid.Row="0" Grid.Column="0" />
+                        <Editor Text="{Binding AssetModel.SapId}" IsReadOnly="True"
                                 AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-                                Placeholder="Sap Id" 
-                                FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+                                Placeholder="Sap Id" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
                     </Grid>
 
-                    <Editor Text="{Binding Asset.Description}"
-                x:Name="Description" 
-                AutoSize="TextChanges" HorizontalOptions="Fill"
-                Placeholder="Descripción" 
-                FontSize="Medium" />
+                    <Editor Text="{Binding AssetModel.Description, Mode=TwoWay}" IsReadOnly="True"  AutoSize="TextChanges" HorizontalOptions="Fill" Placeholder="Descripción" FontSize="Medium" />
 
-                    <Grid x:Name="MainGridAsset2">
+                    <Grid x:Name="GridLocationCostCenterName">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -56,18 +46,17 @@
                             <ColumnDefinition Width="0.50*" />
                             <ColumnDefinition Width="0.50*" />
                         </Grid.ColumnDefinitions>
-                        <Editor Text="{Binding Asset.Location}"
-                            x:Name="Location" 
+                        <Editor Text="{Binding AssetModel.Location, Mode=TwoWay}" IsReadOnly="True"
                             AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-                            Placeholder="Location" 
-                            FontSize="Medium" Grid.Row="0" Grid.Column="0" />
-                        <Editor Text="{Binding Asset.CostCenterName}"
-                            x:Name="CostCenterName" 
+                            Placeholder="Location" FontSize="Medium" Grid.Row="0" Grid.Column="0" />
+
+                        <Editor Text="{Binding AssetModel.CostCenterName, Mode=TwoWay}" IsReadOnly="True"
                             AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-                            Placeholder="Centro de costo" 
-                            FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+                            Placeholder="Centro de costo" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+
                     </Grid>
-                    <Grid x:Name="MainGridAsset3">
+
+                    <Grid x:Name="GridCreatedByLastModifiedBy">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -77,18 +66,14 @@
                             <ColumnDefinition Width="0.50*" />
                         </Grid.ColumnDefinitions>
 
-                        <Editor Text="{Binding Asset.CreatedBy}"
-                            x:Name="CreatedBy" 
+                        <Editor Text="{Binding AssetModel.CreatedBy, Mode=TwoWay}" IsReadOnly="True"
                             AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-                            Placeholder="Creado por" 
-                           FontSize="Medium" Grid.Row="1" Grid.Column="0" />
-                        <Editor Text="{Binding Asset.LastModifiedBy}"
-                            x:Name="LastModifiedBy" 
+                            Placeholder="Creado por" FontSize="Medium" Grid.Row="1" Grid.Column="0" />
+                        <Editor Text="{Binding AssetModel.LastModifiedBy, Mode=TwoWay}" IsReadOnly="True"
                             AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
-                            Placeholder="Modificado por" 
-                            FontSize="Medium" Grid.Row="1" Grid.Column="1" />
+                            Placeholder="Modificado por" FontSize="Medium" Grid.Row="1" Grid.Column="1" />
                     </Grid>
-                    <Button Text="Nuevo activo" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding AddCommand}" />
+                    <Button Text="Nuevo activo" TextColor="White" Font="Bold,16" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding AddCommand}" />
 
                     <Grid x:Name="ButtonGrid">
                         <Grid.RowDefinitions>
@@ -102,20 +87,20 @@
                             <ColumnDefinition Width="0.33*" />
                         </Grid.ColumnDefinitions>
 
-                        <Button Text="Editar" x:Name="btn1" VerticalOptions="CenterAndExpand" Command="{Binding EditCommand}" BackgroundColor="{StaticResource Accent}"
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                        <Button Text="Editar" VerticalOptions="CenterAndExpand" Command="{Binding EditCommand}" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Font="Bold"/>
 
-                        <Button Text="Ver" x:Name="btn2" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+                        <Button Text="Ver" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" Font="Bold"/>
 
-                        <Button Text="Buscar" x:Name="btn3" VerticalOptions="CenterAndExpand" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Accent}"
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                        <Button Text="Buscar" VerticalOptions="CenterAndExpand" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Font="Bold"/>
 
-                        <Button Text="Borrar" x:Name="btn4" VerticalOptions="CenterAndExpand" Command="{Binding DeleteCommand}" BackgroundColor="{StaticResource Accent}"
-                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="3"/>
+                        <Button Text="Borrar" VerticalOptions="CenterAndExpand" Command="{Binding DeleteCommand}" BackgroundColor="{StaticResource Accent}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="3" Font="Bold"/>
 
                     </Grid>
-                    
+
                 </StackLayout>
             </StackLayout>
         </ScrollView>

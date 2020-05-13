@@ -49,6 +49,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
+
     </StackLayout>
 </ContentPage>

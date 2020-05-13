@@ -86,7 +86,6 @@ namespace eTrack.Mobile.ViewModels
         private async void OnRemoveCommand(string parameter)
         {
             var result = await UserDialogs.Instance.ConfirmAsync(string.Format(UserMessageResources.AssetAuditDeleteConfirmation, parameter), "Eliminar", "Si", "No");
-
             if (result)
                 await Application.Current.MainPage.DisplayAlert("Auditoria Eliminada", parameter, "Ok");
 

@@ -14,14 +14,42 @@ namespace eTrack.Mobile.Services
         {
             AssetModels = new ObservableCollection<AssetModel>();
 
-            for (int i = 1; i < 10; i++)
+            AssetModels.Add(new AssetModel()
+            {
+                Id = "1",
+                Code = "Código - " + Guid.NewGuid().ToString().Substring(0, 5),
+                FilePath = "icon_auditar.png",
+                Description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. -"
+            });
+            AssetModels.Add(new AssetModel()
+            {
+                Id = "2",
+                Code = "Código - " + Guid.NewGuid().ToString().Substring(0, 5),
+                FilePath = "icon_reporte.png",
+                Description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. -"
+            });
+            AssetModels.Add(new AssetModel()
+            {
+                Id = "3",
+                Code = "Código - " + Guid.NewGuid().ToString().Substring(0, 5),
+                FilePath = "icon_inventario.png",
+                Description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. -"
+            });
+            AssetModels.Add(new AssetModel()
+            {
+                Id = "4",
+                Code = "Código - " + Guid.NewGuid().ToString().Substring(0, 5),
+                FilePath = "icon_tag.png",
+                Description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. -"
+            });
+            for (int i = 5; i < 10; i++)
             {
                 AssetModels.Add(new AssetModel()
                 {
                     Id = i.ToString(),
                     Code = "Código - " + Guid.NewGuid().ToString().Substring(0, 5),
                     FilePath = "icon_auditar.png",
-                    Description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. -" + i.ToString()
+                    Description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. -"
                 });
             }
             return await Task.FromResult(AssetModels);

@@ -1,69 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" NavigationPage.HasBackButton="False"
-             x:Class="eTrack.Mobile.Views.AltaActivoPage"
-             Title="{Binding Title}">
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" NavigationPage.HasBackButton="False"
+        x:Class="eTrack.Mobile.Views.AltaActivoPage"
+        Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
+        <ToolbarItem Text="CAM" />
     </ContentPage.ToolbarItems>
-    
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="10,0">
-                <!--<Label FontSize="Large" HorizontalOptions="Center" Text="Alta de activo" />-->
-                <StackLayout Spacing="20" Padding="15">
+    <ScrollView>
+        <StackLayout Padding="10,0">
+            <Editor Text="{Binding AssetModel.Tag, Mode=TwoWay}" Placeholder="Tag Id" AutoSize="TextChanges" HorizontalOptions="Fill" FontSize="Medium" />
+            <Grid x:Name="GridCodeCodeSapId">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.50*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
+                <Editor Text="{Binding AssetModel.Code, Mode=TwoWay}"
+                        AutoSize="TextChanges" HorizontalOptions="FillAndExpand"
+                        Placeholder="Código" VerticalOptions="CenterAndExpand" FontSize="Medium" Grid.Row="0" Grid.Column="0" />
+                <Editor Text="{Binding AssetModel.SapId}" 
+                        AutoSize="TextChanges" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"
+                        Placeholder="Sap Id" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+            </Grid>
 
-                    <Editor Text="{Binding AssetModel.Code, Mode=TwoWay}"
-                    x:Name="Code" 
-                    AutoSize="TextChanges" HorizontalOptions="Fill"
-                    Placeholder="Código" 
-                    FontSize="Medium" />
-                    <Editor Text="{Binding AssetModel.SapId, Mode=TwoWay}"
-                    x:Name="SapId" 
-                    AutoSize="TextChanges" HorizontalOptions="Fill"
-                    Placeholder="Sap Id" 
-                    FontSize="Medium" />
-                    <Editor Text="{Binding AssetModel.CostCenterName, Mode=TwoWay}"
-                    x:Name="CostCenterName" 
-                    AutoSize="TextChanges" HorizontalOptions="Fill"
-                    Placeholder="Centro de costo" 
-                    FontSize="Medium" />
-                    <Editor Text="{Binding AssetModel.Location, Mode=TwoWay}"
-                    x:Name="Location" 
-                    AutoSize="TextChanges" HorizontalOptions="Fill"
-                    Placeholder="Location" 
-                    FontSize="Medium" />
+            <Grid x:Name="GridLocationCostCenterName">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.50*" />
+                    <ColumnDefinition Width="0.50*" />
+                </Grid.ColumnDefinitions>
 
-                </StackLayout>
-                <Button Text="Guardar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding SaveCommand}" />
-                <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
-                <Grid x:Name="ButtonGrid">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.33*" />
-                        <ColumnDefinition Width="0.33*" />
-                        <ColumnDefinition Width="0.33*" />
-                        <ColumnDefinition Width="0.33*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Text="+" x:Name="btn1" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" BackgroundColor="{StaticResource Accent}" Grid.Row="0" Grid.Column="0"/>
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding LocationList}" SelectedItem="{Binding LocationSelectedItem, Mode=TwoWay}" 
+            TitleColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="0"/>
 
-                    <Button Text="Cam" x:Name="btn2" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" BackgroundColor="{StaticResource Accent}" Grid.Row="0" Grid.Column="1"/>
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding CostCenterList}" SelectedItem="{Binding CostCenterSelectedItem, Mode=TwoWay}" 
+            TitleColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="1"/>
+            </Grid>
+            <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="Imágen" HorizontalOptions="Start"></Label>
+            <Image Source="{Binding AssetModel.FilePath}"  Aspect="AspectFit" HeightRequest="100" WidthRequest="100" />
 
-                    <Button Text="Ver" x:Name="btn3" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" BackgroundColor="{StaticResource Accent}" Grid.Row="0" Grid.Column="2"/>
+            <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="Descripción" HorizontalOptions="Start"></Label>
+            <Editor Text="{Binding AssetModel.Description, Mode=TwoWay}" AutoSize="TextChanges" HorizontalOptions="Fill" Placeholder="Descripción" FontSize="Medium" />
 
-                    <Button Text="-" x:Name="btn4" VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="Center" BackgroundColor="{StaticResource Accent}" Grid.Row="0" Grid.Column="3"/>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+            <Button Text="Guardar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding SaveCommand}" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
