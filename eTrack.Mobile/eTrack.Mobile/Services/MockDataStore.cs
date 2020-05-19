@@ -20,6 +20,7 @@ namespace eTrack.Mobile.Services
                 new Item { Id = "Auditar", Text = "Auditar", Description="Auditar.",Icon="icon_auditar.png" },
                 new Item { Id = "Reportes", Text = "Reportes", Description="Gestión de reportes." ,Icon="icon_reporte.png" },
                 new Item { Id = "Setting", Text = "Configurar", Description="Configuraciones." ,Icon="icon_setting.png" },
+                new Item { Id = "Execute", Text = "Acciones", Description="Configuraciones." ,Icon="icon_execute.png" },
             };
         }
 

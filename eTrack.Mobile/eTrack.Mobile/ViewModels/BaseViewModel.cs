@@ -168,6 +168,8 @@ namespace eTrack.Mobile.ViewModels
         #region Location List
         public IList<string> LocationList { get; set; }
         string _locationList;
+        
+
         public string LocationSelectedItem
         {
             get { return _locationList; }
@@ -181,5 +183,14 @@ namespace eTrack.Mobile.ViewModels
             }
         }
         #endregion
+
+        private bool _isEmptyDataMessageVisible;
+        public bool IsEmptyDataMessageVisible
+        {
+            get { return _isEmptyDataMessageVisible; }
+            set { SetProperty(ref _isEmptyDataMessageVisible, value); }
+        }
+
+        public string EmptyDataMessage { get; set; }
     }
 }

@@ -1,23 +1,20 @@
-﻿using eTrack.Mobile.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Essentials;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace eTrack.Mobile.Views
+namespace eTrack.Mobile.Views.Asset
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AssetPage : ContentPage
+    public partial class AssetTabbedPage : TabbedPage
     {
-        public AssetPage()
+        public AssetTabbedPage()
         {
             InitializeComponent();
-            BindingContext = new AssetViewModel(Navigation);
         }
     }
 }

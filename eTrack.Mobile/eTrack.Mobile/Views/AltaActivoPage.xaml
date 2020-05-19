@@ -51,7 +51,7 @@
             <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="Descripción" HorizontalOptions="Start"></Label>
             <Editor Text="{Binding AssetModel.Description, Mode=TwoWay}" AutoSize="TextChanges" HorizontalOptions="Fill" Placeholder="Descripción" FontSize="Medium" />
 
-            <Button Text="Guardar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding SaveCommand}" />
+            <Button Text="Guardar" TextColor="White"  BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" Command="{Binding SaveCommand}" Font="Bold,18" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

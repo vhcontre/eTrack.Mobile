@@ -1,4 +1,5 @@
 ﻿using eTrack.Mobile.Services;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace eTrack.Mobile.Models
@@ -21,5 +22,24 @@ namespace eTrack.Mobile.Models
         public string FilePath { get; set; }
 
         
+    }
+
+    public class AssetLabelModel : IEntity
+    {
+        public string Id { get; set; }
+        public string Key { get; set; }
+        public string Value { get; set; }
+    }
+    public class AssetActionModel : IEntity
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public DateTime DateExecute { get; set; }
+        public bool Status { get; set; }
+        
+      
+
+
     }
 }

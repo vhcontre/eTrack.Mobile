@@ -13,11 +13,15 @@
     <ContentPage.Content>
         <StackLayout Padding="10,0">
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="Bold,20"/>
+                <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="20"/>
                 <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
 
-                <Label Text="Aplicar filtro" FontSize="Medium" Font="Bold,20"/>
+                <Label Text="Aplicar filtro por operador" FontSize="Medium" Font="20"/>
                 <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentFilters}" SelectedItem="{Binding SelectedFilter, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
+
+                <Label Text="Aplicar filtro para activos" FontSize="Medium" Font="20"/>
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchAssetFilters}" SelectedItem="{Binding SelectedAssetFilter, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
+
 
                 <Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
                 <DatePicker Format="dd/MM/yyyy"/>

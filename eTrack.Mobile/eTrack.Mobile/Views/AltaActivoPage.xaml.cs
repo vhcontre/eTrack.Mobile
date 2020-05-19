@@ -1,4 +1,4 @@
-﻿using eTrack.Mobile.ViewModels;
+﻿using eTrack.Mobile.ViewModels.Asset;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,6 @@
 ﻿using eTrack.Mobile.Models;
 using eTrack.Mobile.ViewModels;
+using eTrack.Mobile.Views.Asset;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace eTrack.Mobile.Views
             switch (item.Id)
             {
                 case "ABM":
-                    await Navigation.PushAsync(new AssetPage());
+                    //await Navigation.PushAsync(new AssetPage());
+                    await Navigation.PushAsync(new AssetTabbedPage());
                     break;
                 case "AsociarTAG":
                     await Navigation.PushAsync(new AsociarTagPage());
@@ -46,6 +48,9 @@ namespace eTrack.Mobile.Views
                     break;
                 case "Setting":
                     await Navigation.PushAsync(new ConfigPage());
+                    break;
+                case "Execute":
+                    await Navigation.PushAsync(new ActionPage(true));
                     break;
                 default:
                     break;

@@ -35,7 +35,7 @@
                                 Placeholder="Sap Id" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
                     </Grid>
 
-                    <Editor Text="{Binding AssetModel.Description, Mode=TwoWay}" IsReadOnly="True"  AutoSize="TextChanges" HorizontalOptions="Fill" Placeholder="Descripción" FontSize="Medium" />
+                    <Editor Text="{Binding AssetModel.Description, Mode=TwoWay}" IsReadOnly="True" AutoSize="TextChanges" HorizontalOptions="Fill" Placeholder="Descripción" FontSize="Medium" />
 
                     <Grid x:Name="GridLocationCostCenterName">
                         <Grid.RowDefinitions>

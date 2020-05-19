@@ -69,8 +69,6 @@ namespace eTrack.Mobile.Services
             throw new NotImplementedException();
         }
 
-        
-
         public Task<bool> UpdateItemAsync(AssetModel item)
         {
             throw new NotImplementedException();
