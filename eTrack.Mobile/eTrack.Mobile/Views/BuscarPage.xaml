@@ -14,8 +14,9 @@
         <StackLayout Padding="10,0">
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="20"/>
-                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
-
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" SelectedIndexChanged="SelectedIndexChanged" />
+                <Editor IsVisible="False" x:Name="argData" Text="{Binding SearchArgument, Mode=TwoWay}" AutoSize="TextChanges" HorizontalOptions="Fill" FontSize="Medium" />
+                <DatePicker Format="dd/MM/yyyy" IsVisible="False" x:Name="argDate" Date="{Binding SelectedDate}" />
                 <Label Text="Aplicar filtro por operador" FontSize="Medium" Font="20"/>
                 <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentFilters}" SelectedItem="{Binding SelectedFilter, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
 
@@ -23,8 +24,9 @@
                 <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchAssetFilters}" SelectedItem="{Binding SelectedAssetFilter, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
 
 
-                <Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
-                <DatePicker Format="dd/MM/yyyy"/>
+                <!--<Label Text="Fecha" FontSize="Medium" Font="Bold,20"/>
+                <DatePicker Format="dd/MM/yyyy"/>-->
+                
                 <Button Text="Buscar" Command="{Binding FindCommand}" BackgroundColor="{StaticResource Primary}" HorizontalOptions="Fill" TextColor="White" Font="Bold,18" />
                 <Label TextColor="{StaticResource Primary}" FontSize="Medium" Text="{Binding Message}"></Label>
             </StackLayout>

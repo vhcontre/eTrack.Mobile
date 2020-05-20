@@ -21,8 +21,9 @@ namespace eTrack.Mobile.Views.Asset
         }
         public ActionPage(bool isVisible = false)
         {
+            // Si la variable isVisible es true, se muestra el boton 'Ver Activos' y se oculta el boton 'Ejecutar'
             this.Init(isVisible);
-            
+
         }
 
         private void Init(bool isVisible)
@@ -37,6 +38,7 @@ namespace eTrack.Mobile.Views.Asset
         {
             var current = (e.CurrentSelection.FirstOrDefault() as AssetActionModel);
             currentSelectedItemLabel.Text = string.IsNullOrWhiteSpace(current.Id) ? "[Sin selección]" : string.Format("{0}", current.Name);
+            btnActivos.CommandParameter = string.Format("Id: {0} Nombre: {1}", current.Id, current.Name);
         }
     }
 }

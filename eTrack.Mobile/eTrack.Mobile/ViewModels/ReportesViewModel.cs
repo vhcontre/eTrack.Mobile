@@ -4,6 +4,9 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using eTrack.Mobile.Views;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Acr.UserDialogs;
+using System;
 
 namespace eTrack.Mobile.ViewModels
 {
@@ -14,7 +17,7 @@ namespace eTrack.Mobile.ViewModels
         public ICommand AcceptCommand { get; protected set; }
         public ICommand CancelCommand { get; protected set; }
 
-        
+
         public ResultadoReporteViewModel() { }
 
         public ResultadoReporteViewModel(INavigation navigation)
@@ -34,10 +37,12 @@ namespace eTrack.Mobile.ViewModels
     }
     public class ReportesViewModel : BaseViewModel
     {
+        public string SearchArgument { get; set; }
+        public DateTime SelectedDate { get; set; }
         public INavigation Navigation { get; set; }
-        public ICommand AcceptCommand { get; protected set; }
-        public ReportesViewModel() { }
 
+        #region Constructores
+        public ReportesViewModel() { }
         public ReportesViewModel(INavigation navigation)
         {
             Title = "Reportes de auditorías";
@@ -45,22 +50,56 @@ namespace eTrack.Mobile.ViewModels
 
             this.SearchArgumentList = new List<string>() { "Tag", "Código", "Fecha de alta" };
             this.SearchArgumentFilters = new List<string>() { "Menor igual", "Mayor igual", "Igual", "Distinto", "Todos" };
-            // this.AcceptCommand = new Command(async () => await ResultadoReporte());
+            this.IsVisible = false;
+            this.SelectedDate = DateTime.Now;
 
         }
-        private async Task ResultadoReporte()
-        {
-            await this.Navigation.PushAsync(new ResultadoReportePage());
-        }
-        public Command FindCommand
+        #endregion
+
+        public ICommand FindCommand
         {
             get
             {
-                return new Command(() => {
-                    Application.Current.MainPage.DisplayAlert("Buscar", this.SelectedItem + " - " + this.SelectedFilter, "Yes");
+                return new Command(() =>
+                {
+                    var data = string.Format("Item: {0} - Argument: {1} - Filtro: {2}",
+                        this.SelectedItem,
+                        (SelectedItem == "Fecha de alta") ? SelectedDate.ToString("dd/MM/yyyy") : SearchArgument, this.SelectedFilter);
+                    UserDialogs.Instance.Alert(data, "Valores");
                     Navigation.PushAsync(new ResultadoBusquedaPage());
                 });
             }
+        }
+        public ICommand ChangeOptionCommand
+        {
+            get
+            {
+                return new Command<string>(ChangeOption);
+            }
+        }
+        public void ChangeOption(string selectedOption)
+        {
+
+            switch (selectedOption)
+            {
+                case "Tag":
+                    this.IsVisible = true;
+                    this.IsVisibleDate = false;
+                    this.Placeholder = string.Format("Ingrese el valor del {0}", selectedOption);
+                    break;
+                case "Código":
+                    this.IsVisible = true;
+                    this.IsVisibleDate = false;
+                    this.Placeholder = string.Format("Ingrese el valor del {0}", selectedOption);
+                    break;
+                case "Fecha de alta":
+                    this.IsVisible = false;
+                    this.IsVisibleDate = true;
+                    break;
+                default:
+                    break;
+            }
+
         }
     }
 }

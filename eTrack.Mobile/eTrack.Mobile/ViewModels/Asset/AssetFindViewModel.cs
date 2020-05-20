@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Acr.UserDialogs;
 using eTrack.Mobile.Views;
 using Xamarin.Forms;
 
@@ -6,6 +9,8 @@ namespace eTrack.Mobile.ViewModels.Asset
 {
     public class AssetFindViewModel : BaseViewModel
     {
+        public string SearchArgument { get; set; }
+        public DateTime SelectedDate { get; set; }
         public AssetFindViewModel() { }
         #region Aplicar filtros Activos
         public IList<string> SearchAssetFilters { get; set; }
@@ -42,7 +47,14 @@ namespace eTrack.Mobile.ViewModels.Asset
             {
                 return new Command(() =>
                 {
-                    Application.Current.MainPage.DisplayAlert("Editar", this.SelectedItem + " - " + this.SelectedFilter, "Yes");
+
+                    var data = string.Format("{0}{1}{2}{3}",
+                        this.SelectedItem,
+                        (SelectedItem == "Fecha de alta") ? SelectedDate.ToString("dd/MM/yyyy") : SearchArgument,
+                        this.SelectedFilter, this.SelectedAssetFilter);
+                    UserDialogs.Instance.Alert(data, "Valores");
+
+                    
                     Navigation.PushAsync(new ResultadoBusquedaPage());
                 });
             }

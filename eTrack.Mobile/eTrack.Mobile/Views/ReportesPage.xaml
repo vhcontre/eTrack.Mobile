@@ -15,30 +15,17 @@
         <StackLayout Padding="10,0">
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Buscar por Tag, Código o Fecha" FontSize="Medium" Font="Bold,20"/>
-                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
-
+                <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentList}" 
+                        SelectedItem="{Binding SelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" 
+                        SelectedIndexChanged="Handle_SelectedIndexChanged"/>
+                <Editor IsVisible="{Binding IsVisible}" Placeholder="{Binding Placeholder}" Text="{Binding SearchArgument, Mode=TwoWay}" AutoSize="TextChanges" HorizontalOptions="Fill" FontSize="Medium" />
+                <DatePicker Format="dd/MM/yyyy" IsVisible="{Binding IsVisibleDate}" Date="{Binding SelectedDate, Mode=TwoWay}" />
                 <Label Text="Aplicar filtro" FontSize="Medium" Font="Bold,20"/>
                 <Picker Title="Seleccione un ítem" ItemsSource="{Binding SearchArgumentFilters}" SelectedItem="{Binding SelectedFilter, Mode=TwoWay}" TitleColor="{StaticResource Primary}" />
 
-                <!--<Label Text="Fecha" FontSize="Medium" />-->
-                <DatePicker Format="dd/MM/yyyy" />
                 <Button Text="Aceptar" BackgroundColor="{StaticResource Primary}" Command="{Binding FindCommand}"  HorizontalOptions="Fill" TextColor="White" Font="Bold,18" />
                                  
-                <!--<Grid x:Name="MainGrid">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.50*" />
-                        <ColumnDefinition Width="0.50*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Text="Aceptar"  WidthRequest="150" HeightRequest="60" x:Name="btn1" VerticalOptions="CenterAndExpand" 
-                                Command="{Binding AcceptCommand}" BackgroundColor="{StaticResource Primary}" 
-                                HorizontalOptions="Center" Grid.Row="0" Grid.Column="0"/>
-                    <Button Text="Cancelar" WidthRequest="150" HeightRequest="60" x:Name="btn2" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Accent}"
-                            HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
-                </Grid>-->
+                
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

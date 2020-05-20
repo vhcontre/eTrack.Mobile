@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using eTrack.Mobile.Models;
 using eTrack.Mobile.Views;
 using eTrack.Mobile.Views.Popups;
@@ -34,7 +35,10 @@ namespace eTrack.Mobile.ViewModels.Asset
             this.EmptyDataMessage = "No existen registros disponibles.";
             AcceptCommand = new Command(execute: OnAcceptCommand);
             CancelCommand = new Command(execute: OnCancelCommand);
-            if(isActionMenu)
+
+            // return new Command<string>((parameter) => OnViewAssetCommand(parameter));
+            ViewCommand = new Command<string>((parameter) => OnViewAssetCommand(parameter));
+            if (isActionMenu)            
                 GetItemsMenuAsync().ConfigureAwait(false); 
             else
                 GetItemsAsync().ConfigureAwait(false);
@@ -54,8 +58,14 @@ namespace eTrack.Mobile.ViewModels.Asset
         }
         public ICommand AcceptCommand { get; internal set; }
         public ICommand CancelCommand { get; internal set; }
+        public ICommand ViewCommand { get; internal set; }
 
-        
+
+        private async void OnViewAssetCommand(string parameter)
+        {
+            UserDialogs.Instance.Alert(parameter, "View Id Action");
+            await Navigation.PushAsync(new ResultadoBusquedaPage());
+        }
 
         private async void OnCancelCommand(object obj)
         {
@@ -67,6 +77,7 @@ namespace eTrack.Mobile.ViewModels.Asset
 
             await PopupNavigation.Instance.PopAsync(true);
         }
+
         public async Task GetItemsAsync()
         {
             IsBusy = true;

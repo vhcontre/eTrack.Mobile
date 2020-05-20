@@ -63,7 +63,7 @@
 
             <Button Text="Ejecutar" Command="{Binding ExecuteCommand}" VerticalOptions="CenterAndExpand"  IsVisible="true" x:Name="btnEjecutar"
                     BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18" />
-            <Button Text="Ver Activos" VerticalOptions="CenterAndExpand" IsVisible="False" x:Name="btnActivos"
+            <Button Text="Ver Activos" Command="{Binding ViewCommand}}"  VerticalOptions="CenterAndExpand" IsVisible="False" x:Name="btnActivos"
                     BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18" />
             <Label IsVisible="{Binding IsEmptyDataMessageVisible}" Text="{Binding EmptyDataMessage}" FontAttributes="Italic" FontSize="Medium" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" />
             <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" />

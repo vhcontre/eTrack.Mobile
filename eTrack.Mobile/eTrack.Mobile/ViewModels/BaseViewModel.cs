@@ -19,10 +19,50 @@ namespace eTrack.Mobile.ViewModels
         string _title = string.Empty;
 
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-        public IDataStore<AssetAuditModel> AssetAuditDb => DependencyService.Get<IDataStore<AssetAuditModel>>();        
-        //public IDataStore<AssetModel> AssetDb => DependencyService.Get<IDataStore<AssetModel>>();
+        public IDataStore<AssetAuditModel> AssetAuditDb => DependencyService.Get<IDataStore<AssetAuditModel>>();
 
-        
+        bool _isVisibleDate = false;
+        public bool IsVisibleDate
+        {
+            get
+            {
+                return _isVisibleDate;
+            }
+            set
+            {
+                _isVisibleDate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsVisibleDate"));
+            }
+        }
+
+        bool isVisible = false;
+        public bool IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            set
+            {
+                isVisible = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsVisible"));
+            }
+        }
+
+        string _placeholder;
+        public string Placeholder
+        {
+            get
+            {
+                return _placeholder;
+            }
+            set
+            {
+                _placeholder = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Placeholder"));
+            }
+        }
+
         public bool IsBusy
         {
             get { return _isBusy; }
@@ -33,13 +73,11 @@ namespace eTrack.Mobile.ViewModels
             }
         }
 
-
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-
 
         public bool IsContentEnabled
         {
@@ -57,8 +95,6 @@ namespace eTrack.Mobile.ViewModels
             get { return _contentOpacity; }
             set { SetProperty(ref _contentOpacity, value); }
         }
-
-
         public virtual Command BackCommand
         {
             get
@@ -69,9 +105,6 @@ namespace eTrack.Mobile.ViewModels
                 });
             }
         }
-
-
-
         public string Message
         {
             get
@@ -85,9 +118,7 @@ namespace eTrack.Mobile.ViewModels
             }
         }
 
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName]string propertyName = "",
-            Action onChanged = null)
+        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName]string propertyName = "", Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
@@ -105,7 +136,6 @@ namespace eTrack.Mobile.ViewModels
             var changed = PropertyChanged;
             if (changed == null)
                 return;
-
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
@@ -120,8 +150,8 @@ namespace eTrack.Mobile.ViewModels
             {
                 if (_argName != value)
                 {
-                    if (string.IsNullOrWhiteSpace(value))
-                        _argName = "Tag";
+                    //if (string.IsNullOrWhiteSpace(value))
+                    //    _argName = "Tag";
                     _argName = value;
                     OnPropertyChanged();
                 }
@@ -168,7 +198,7 @@ namespace eTrack.Mobile.ViewModels
         #region Location List
         public IList<string> LocationList { get; set; }
         string _locationList;
-        
+
 
         public string LocationSelectedItem
         {
