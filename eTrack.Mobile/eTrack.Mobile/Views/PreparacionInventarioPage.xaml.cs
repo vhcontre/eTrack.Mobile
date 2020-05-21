@@ -15,20 +15,18 @@ namespace eTrack.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PreparacionInventarioPage : ContentPage
     {
-        public ObservableCollection<AssetModel> MyList { get; set; }
+
         public PreparacionInventarioPage()
         {
             InitializeComponent();
 
             BindingContext = new PreparacionInventarioViewModel(Navigation);
-            MyList = new ObservableCollection<AssetModel>();
 
-            for (int i = 1; i < 5; i++)
-            {
-                MyList.Add(new AssetModel() { Id = i.ToString(), Code = "Código" + i.ToString(), SapId = "SapId" + i.ToString(), Location = "Ubicación" + i.ToString() });
-            }
+        }
 
-            ContactsList.ItemsSource = MyList;
+        private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -5,68 +5,96 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:eTrack.Mobile.Views"
              mc:Ignorable="d" x:Class="eTrack.Mobile.Views.PreparacionInventarioPage"
-             NavigationPage.HasBackButton="False" Title="{Binding Title}"
-             x:Name="ContentPage1">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Salir" Command="{Binding BackCommand}" />
-    </ContentPage.ToolbarItems>
-    <ContentPage.Content>
-        <StackLayout Padding="10,0">
-            <StackLayout Spacing="20" Padding="15">
-                <Picker x:Name="pickerBuscar" Title="Seleccione Centro de costo" TitleColor="{StaticResource Primary}">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Centro de costoNorte</x:String>
-                            <x:String>Centro de costo Moreno</x:String>
-                            <x:String>Centro de costo Castelar</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-                <Picker x:Name="pickerLocation" Title="Seleccione una Ubicación" TitleColor="{StaticResource Primary}">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Norte</x:String>
-                            <x:String>Moreno</x:String>
-                            <x:String>Golden</x:String>
-                            <x:String>Howler</x:String>
-                            <x:String>Castelar</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-                <Button Margin="0,10,0,0" Text="Filtrar " BackgroundColor="{StaticResource Primary}" TextColor="White" />
-            </StackLayout>
+             NavigationPage.HasBackButton="False" Title="{Binding Title}" >
 
-            <StackLayout Spacing="20" Padding="15">
-                <ScrollView>
-                    <StackLayout Padding="10,0">
-                        <ListView x:Name="ContactsList" ItemsSource="{Binding Source={x:Reference ContentPage1}, Path=BindingContext.MyList}" IsVisible="True">
-                            <ListView.Header >
-                                <StackLayout Orientation="Horizontal ">
-                                    <Label Text="Activos fijos" FontSize="Medium" HorizontalTextAlignment="Center" />
-                                </StackLayout>
-                            </ListView.Header>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <ViewCell.ContextActions>
-                                        </ViewCell.ContextActions>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Id}"></Label>
-                                            <Label Text="{Binding Code}"></Label>
-                                            <Label Text="{Binding Location}"></Label>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
 
-            <StackLayout Spacing="20" Padding="15">
-                <Button Margin="0,10,0,0" Text="Siguiente " Command="{Binding InventoryCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" />
+    <AbsoluteLayout>
+        <StackLayout Padding="10,0"  Opacity="{Binding ContentOpacity}" IsEnabled="{Binding IsContentEnabled}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout>
+                <Grid x:Name="GridLocationCostCenterName">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="0.50*" />
+                    </Grid.ColumnDefinitions>
+                    <Picker Title="Seleccione Ubicación" ItemsSource="{Binding LocationList}" SelectedItem="{Binding LocationSelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="0"/>
+                    <Picker Title="Seleccione Centro Costo" ItemsSource="{Binding CostCenterList}" SelectedItem="{Binding CostCenterSelectedItem, Mode=TwoWay}" TitleColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="1"/>
+                </Grid>
+                <Button Text="Filtrar" Command="{Binding FilterCommand}" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18" />
+            </StackLayout>
+            <ScrollView>
+                <!--<CollectionView ItemsSource="{Binding Items}" SelectionMode="Single" SelectionChanged="OnCollectionViewSelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2" 
+                               Source="{Binding FilePath}" 
+                               Aspect="AspectFill"
+                               HeightRequest="60" 
+                               WidthRequest="60" />
+                                <Label Grid.Column="1" 
+                               Text="{Binding AssetId}" 
+                               FontAttributes="Bold" />
+                                <Label Grid.Row="1"
+                               Grid.Column="1" 
+                               Text="{Binding Description}"
+                               FontAttributes="Italic" 
+                               VerticalOptions="End" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
+                <CollectionView ItemsSource="{Binding Items}" SelectionMode="Single"
+                            Opacity="{Binding ContentOpacity}" IsEnabled="{Binding IsContentEnabled}"
+                            SelectionChanged="OnCollectionViewSelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2" 
+                               Source="{Binding FilePath}" 
+                               Aspect="AspectFill"
+                               HeightRequest="48" 
+                               WidthRequest="48" />
+                                <Label Grid.Column="1" 
+                               Text="{Binding Id, StringFormat='Id: {0}'}" FontSize="Medium"
+                               FontAttributes="Bold" />
+                                <Label Grid.Row="1" Grid.Column="1" 
+                               Text="{Binding Code, StringFormat='{0}'}" FontSize="Medium"
+                               FontAttributes="Bold" />
+                                <Label Grid.Row="2"
+                               Grid.Column="1" 
+                               Text="{Binding Description, StringFormat='{0}'}" FontSize="Medium"
+                               FontAttributes="Italic" 
+                               VerticalOptions="End" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+            <StackLayout  Padding="0,10">
+                <Button Text="Siguiente" Command="{Binding InventoryCommand}" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource Primary}" TextColor="White" Font="Bold,18" />
             </StackLayout>
         </StackLayout>
-
-    </ContentPage.Content>
+        <!--Indicador de actividad-->
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red"  AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds=".5,.5,-1,-1" />
+    </AbsoluteLayout>
 </ContentPage>

@@ -19,11 +19,9 @@ namespace eTrack.Mobile.Views
             BindingContext = new InventarioViewModel(Navigation);
         }
 
-        
+        private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-        //async void Notas_Clicked(object sender, EventArgs e)
-        //{
-        //    await Navigation.PushAsync(new InventarioNotasPage());
-        //}
+        }
     }
 }

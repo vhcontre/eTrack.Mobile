@@ -59,11 +59,5 @@ namespace eTrack.Mobile.ViewModels.Asset
                 });
             }
         }
-
-
-
-
-
-
     }
 }
